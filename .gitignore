@@ -26,6 +26,7 @@ Thumbs.db
 [Aa]ssets/**/*.svd
 [Aa]ssets/**/*.pdb
 [Aa]ssets/**/*.opendb
+
 # Visual Studio 2022
 .vscode/
 .vs/
