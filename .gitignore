@@ -1,0 +1,122 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Pp]ackages/manifest.json
+[Pp]ackages/packages-lock.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio / MonoDevelop generated files
+[Vv]isual[Ss]tudio/
+[Aa]ssets/**/*.csproj
+[Aa]ssets/**/*.unityproj
+[Aa]ssets/**/*.sln
+[Aa]ssets/**/*.suo
+[Aa]ssets/**/*.user
+[Aa]ssets/**/*.userprefs
+[Aa]ssets/**/*.pidb
+[Aa]ssets/**/*.booproj
+[Aa]ssets/**/*.svd
+[Aa]ssets/**/*.pdb
+[Aa]ssets/**/*.opendb
+
+# Visual Studio 2022
+.vscode/
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+*.VC.db-shm
+*.VC.db-wal
+ipch/
+*.ipch
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.cachefile
+*.VC.db
+*.VC.opendb
+*.VC.codeModelOpen
+*.VC.browse.VC.db
+*.VC.*.VC.db
+*.VC.*.VC.opendb
+# Local history for Visual Studio
+.vshistory/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folders for source control
+$tf/
+$tf_ignore/
+$tf_ignore.txt
+# SQL Server files
+*.mdf
+*.ldf
+
+# Office Temp Files
+~$*
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+# SQL Server
+*.mdf
+*.ldf
+
+# Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln*
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Publish Web Output
+*.publish.xml
+
+# Publish
+publish/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# End of standard .gitignore
