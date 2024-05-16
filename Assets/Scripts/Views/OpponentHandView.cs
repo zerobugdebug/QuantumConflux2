@@ -3,22 +3,19 @@ using UnityEngine;
 
 public class OpponentHandView : MonoBehaviour
 {
-    public Transform handTransform;
-    public GameObject cardPrefab;
+    public List<CardView> opponentHandCards;
 
-    public void UpdateHand(List<CardModel> hand)
+    public void UpdateView(List<CardModel> opponentHand)
     {
-        // Clear existing cards
-        foreach (Transform child in handTransform)
+        if (opponentHand == null)
         {
-            Destroy(child.gameObject);
+            Debug.LogError("Opponent hand is null");
+            return;
         }
-        // Instantiate card prefabs for each card in the hand
-        foreach (var card in hand)
+
+        for (int i = 0; i < opponentHandCards.Count && i < opponentHand.Count; i++)
         {
-            GameObject cardGO = Instantiate(cardPrefab, handTransform);
-            CardView cardView = cardGO.GetComponent<CardView>();
-            cardView.SetCardData(card);
+            opponentHandCards[i].UpdateView(opponentHand[i]);
         }
     }
 }

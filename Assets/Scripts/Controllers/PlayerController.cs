@@ -4,50 +4,38 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public PlayerModel playerModel;
-    public PlayerStatsView playerStatsView;
-    public PlayerHandView playerHandView;
 
     void Start()
     {
         InitializePlayer();
-        UpdatePlayerStats();
     }
 
-    public void InitializePlayer()
+    void InitializePlayer()
     {
-        playerModel = new PlayerModel
-        {
-            Health = 12,
-            Charges = 12,
-            Deck = new List<CardModel>(), // Load or generate the player's deck
-            Hand = new List<CardModel>()
-        };
-        DrawInitialHand();
-    }
+        playerModel = new PlayerModel();
+        // Initialize player deck, strategies, etc.
+        ShuffleDeck(playerModel.Deck);
 
-    public void DrawInitialHand()
-    {
+        // Draw initial hand
         for (int i = 0; i < 4; i++)
         {
-            DrawCard();
+            playerModel.DrawCard();
         }
     }
 
-    public void DrawCard()
+    void Update()
     {
-        if (playerModel.Deck.Count > 0)
+        // Handle player logic, turns, etc.
+    }
+
+    void ShuffleDeck(List<CardModel> deck)
+    {
+        for (int i = 0; i < deck.Count; i++)
         {
-            var card = playerModel.Deck[0];
-            playerModel.Deck.RemoveAt(0);
-            playerModel.Hand.Add(card);
-// playerHandView.UpdateHand(playerModel.Hand);
+            CardModel temp = deck[i];
+            int randomIndex = Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
         }
     }
-
-    public void UpdatePlayerStats()
-    {
-        playerStatsView.UpdatePlayerStats(playerModel.Health, playerModel.Charges);
-    }
-
-    // Additional player-specific methods...
 }

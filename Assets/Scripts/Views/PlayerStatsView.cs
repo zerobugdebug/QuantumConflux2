@@ -3,12 +3,12 @@ using TMPro;
 
 public class PlayerStatsView : MonoBehaviour
 {
-    public TextMeshProUGUI healthText;
-    public TextMeshProUGUI chargesText;
+    public TextMeshProUGUI lifePointsText;
+    public TextMeshProUGUI pillzText;
 
-    public void UpdatePlayerStats(int health, int charges)
+    public void UpdateView(int lifePoints, int pillz)
     {
-        healthText.text = "Health: " + health.ToString();
-        chargesText.text = "Pillz: " + charges.ToString();
+        lifePointsText.text = "Health: " + lifePoints.ToString();
+        pillzText.text = "Charges: " + pillz.ToString();
     }
 }

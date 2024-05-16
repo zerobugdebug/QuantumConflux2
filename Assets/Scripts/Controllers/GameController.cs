@@ -1,28 +1,70 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public PlayerController playerController;
-    public OpponentController opponentController;
+    public List<CardModel> playerDeck;
+    public List<CardModel> opponentDeck;
+    public PlayerModel playerModel;
+    public OpponentModel opponentModel;
 
     void Start()
     {
-        // Initialize both players at the start of the game
-        playerController.InitializePlayer();
-        opponentController.InitializeOpponent();
-
-        StartTurn();
+        InitializeGame();
     }
 
-    public void StartTurn()
+    void InitializeGame()
     {
-        // Logic to start the player's turn
+        ShuffleDeck(playerDeck);
+        ShuffleDeck(opponentDeck);
+
+        playerModel = new PlayerModel();
+        opponentModel = new OpponentModel();
+
+        // Draw initial hands
+        for (int i = 0; i < 4; i++)
+        {
+            playerModel.DrawCard();
+            opponentModel.DrawCard();
+        }
     }
 
-    public void EndTurn()
+    void Update()
     {
-        // Logic to end the player's turn and start the opponent's turn
+        // Handle game logic, turns, etc.
     }
 
-    // Methods to handle game flow, transitions, etc.
+    void ShuffleDeck(List<CardModel> deck)
+    {
+        for (int i = 0; i < deck.Count; i++)
+        {
+            CardModel temp = deck[i];
+            int randomIndex = Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
+    }
+
+    public void PlayRound(CardModel playerCard, CardModel opponentCard, int playerPillz, int opponentPillz)
+    {
+        int playerAttack = playerCard.Power * playerPillz;
+        int opponentAttack = opponentCard.Power * opponentPillz;
+
+        if (playerAttack > opponentAttack)
+        {
+            // Player wins the round
+            opponentModel.LifePoints -= playerCard.Damage;
+        }
+        else if (opponentAttack > playerAttack)
+        {
+            // Opponent wins the round
+            playerModel.LifePoints -= opponentCard.Damage;
+        }
+        else
+        {
+            // Handle tie case
+        }
+
+        // Update game state, check for win/loss, etc.
+    }
 }
