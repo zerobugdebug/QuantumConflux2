@@ -393,8 +393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bffcab0a857f920489228d845b82b230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePointsText: {fileID: 0}
-  pillzText: {fileID: 0}
+  lifePointsText: {fileID: 847734492}
+  pillzText: {fileID: 2019656924}
 --- !u!1 &119713626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,8 +1950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dad09d503b6644a83814ced5f9305c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePointsText: {fileID: 0}
-  pillzText: {fileID: 0}
+  lifePointsText: {fileID: 1662034017}
+  pillzText: {fileID: 388210999}
 --- !u!114 &1789442900
 MonoBehaviour:
   m_ObjectHideFlags: 0

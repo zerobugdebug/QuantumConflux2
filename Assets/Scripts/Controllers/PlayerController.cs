@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerModel playerModel;
+    public PlayerModel player;
+    public PlayerHandView playerHandView;
 
     void Start()
     {
@@ -12,15 +13,17 @@ public class PlayerController : MonoBehaviour
 
     void InitializePlayer()
     {
-        playerModel = new PlayerModel();
+        player = new PlayerModel();
         // Initialize player deck, strategies, etc.
-        ShuffleDeck(playerModel.Deck);
+        ShuffleDeck(player.Deck);
 
         // Draw initial hand
         for (int i = 0; i < 4; i++)
         {
-            playerModel.DrawCard();
+            player.DrawCard();
         }
+
+        playerHandView.UpdateView(player.Hand);
     }
 
     void Update()
@@ -37,5 +40,14 @@ public class PlayerController : MonoBehaviour
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
         }
+    }
+
+
+    // Method to handle card selection
+    public CardModel SelectCard()
+    {
+        CardModel selectedCard = playerHandView.SelectCard();
+        player.SelectedCard = selectedCard;
+        return selectedCard;
     }
 }

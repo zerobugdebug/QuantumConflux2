@@ -6,6 +6,7 @@ public class PlayerModel
     public List<CardModel> Hand { get; set; }
     public int LifePoints { get; set; }
     public int Pillz { get; set; }
+    public CardModel SelectedCard { get; set; }
 
     public PlayerModel()
     {

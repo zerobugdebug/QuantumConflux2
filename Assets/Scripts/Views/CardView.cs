@@ -10,22 +10,32 @@ public class CardView : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI clanText;
     public TextMeshProUGUI bonusText;
-    public Image portraitImage;  // Add a reference to the Image component
+    public Image portraitImage;  // Reference to the Image component
 
-    public void UpdateView(CardModel cardModel)
+    private CardModel card;  // Field to hold the corresponding model for the Card
+
+    // Property to access the CardModel
+    public CardModel Card
     {
-        if (cardModel == null)
+        get { return card; }
+    }
+
+    public void UpdateView(CardModel card)
+    {
+        if (card == null)
         {
             Debug.LogError("CardModel is null");
             return;
         }
 
-        nameText.text = cardModel.Name;
-        powerText.text = cardModel.Power.ToString();
-        damageText.text = cardModel.Damage.ToString();
-        levelText.text = $"Level: {cardModel.Level}/{cardModel.MaxLevel}";
-        clanText.text = cardModel.Clan;
-        bonusText.text = cardModel.Bonus;
-        portraitImage.sprite = cardModel.Portrait;  // Update the portrait image
+        this.card = card;  // Set the CardModel
+
+        nameText.text = card.Name;
+        powerText.text = card.Power.ToString();
+        damageText.text = card.Damage.ToString();
+        levelText.text = $"Level: {card.Level}/{card.MaxLevel}";
+        clanText.text = card.Clan;
+        bonusText.text = card.Bonus;
+        portraitImage.sprite = card.Portrait;  // Update the portrait image
     }
 }

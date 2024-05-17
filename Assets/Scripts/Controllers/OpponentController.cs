@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class OpponentController : MonoBehaviour
 {
-    public OpponentModel opponentModel;
+    public OpponentModel opponent;
+    public OpponentHandView opponentHandView;
 
     void Start()
     {
@@ -12,14 +13,14 @@ public class OpponentController : MonoBehaviour
 
     void InitializeOpponent()
     {
-        opponentModel = new OpponentModel();
+        opponent = new OpponentModel();
         // Initialize opponent deck, strategies, etc.
-        ShuffleDeck(opponentModel.Deck);
+        ShuffleDeck(opponent.Deck);
 
         // Draw initial hand
         for (int i = 0; i < 4; i++)
         {
-            opponentModel.DrawCard();
+            opponent.DrawCard();
         }
     }
 

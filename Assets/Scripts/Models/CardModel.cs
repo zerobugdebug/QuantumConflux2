@@ -13,9 +13,9 @@ public class CardModel
     public string Clan { get; set; }  // Represents the card's clan affiliation
     public string Bonus { get; set; }  // Represents the card's clan bonus
     public Sprite Portrait { get; set; }  // Represents the card's portrait image
-
+    public int Pillz { get; set; }
     // Constructor for easy initialization
-    public CardModel(int id, string name, int power, int damage, List<string> abilities, int level, int maxLevel, string clan, string bonus, Sprite portrait)
+    public CardModel(int id, string name, int power, int damage, List<string> abilities, int level, int maxLevel, string clan, string bonus, Sprite portrait, int pillz)
     {
         Id = id;
         Name = name;
@@ -27,5 +27,6 @@ public class CardModel
         Clan = clan;
         Bonus = bonus;
         Portrait = portrait;
+        Pillz = pillz;
     }
 }
