@@ -1,70 +1,66 @@
-using System.Collections.Generic;
 using UnityEngine;
+
+public enum PlayerType
+{
+    Player,
+    Opponent
+}
 
 public class GameController : MonoBehaviour
 {
-    public List<CardModel> playerDeck;
-    public List<CardModel> opponentDeck;
-    public PlayerModel playerModel;
-    public OpponentModel opponentModel;
+    public GameStateController GameStateController;
+    public GameStateModel SetupGameState;
+    public GameStateModel SelectStartingPlayerState;
+    public GameStateModel TurnState;
+    public GameStateModel ResolveRoundState;
+    public GameStateModel SwitchRolesState;
+    public GameStateModel CheckGameEndState;
+    public GameStateModel EndGameState;
+
+    public PlayerType CurrentTurnPlayer { get; private set; }
+    public bool TurnFinished { get; private set; }
 
     void Start()
     {
-        InitializeGame();
+        GameStateController.SetState(SetupGameState, this);
     }
 
-    void InitializeGame()
+    public void InitializeGame()
     {
-        ShuffleDeck(playerDeck);
-        ShuffleDeck(opponentDeck);
-
-        playerModel = new PlayerModel();
-        opponentModel = new OpponentModel();
-
-        // Draw initial hands
-        for (int i = 0; i < 4; i++)
-        {
-            playerModel.DrawCard();
-            opponentModel.DrawCard();
-        }
+        // Initialize game logic
     }
 
-    void Update()
+    public void SelectStartingPlayer()
     {
-        // Handle game logic, turns, etc.
+        // Randomly select the starting player
+        CurrentTurnPlayer = (Random.value > 0.5f) ? PlayerType.Player : PlayerType.Opponent;
     }
 
-    void ShuffleDeck(List<CardModel> deck)
+    public void StartTurn()
     {
-        for (int i = 0; i < deck.Count; i++)
-        {
-            CardModel temp = deck[i];
-            int randomIndex = Random.Range(i, deck.Count);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = temp;
-        }
+        // Logic for starting a turn
+        TurnFinished = false;
     }
 
-    public void PlayRound(CardModel playerCard, CardModel opponentCard, int playerPillz, int opponentPillz)
+    public void ResolveRound()
     {
-        int playerAttack = playerCard.Power * playerPillz;
-        int opponentAttack = opponentCard.Power * opponentPillz;
+        // Logic for resolving the round
+    }
 
-        if (playerAttack > opponentAttack)
-        {
-            // Player wins the round
-            opponentModel.LifePoints -= playerCard.Damage;
-        }
-        else if (opponentAttack > playerAttack)
-        {
-            // Opponent wins the round
-            playerModel.LifePoints -= opponentCard.Damage;
-        }
-        else
-        {
-            // Handle tie case
-        }
+    public void SwitchRoles()
+    {
+        // Swap the roles of attacker and defender
+        CurrentTurnPlayer = (CurrentTurnPlayer == PlayerType.Player) ? PlayerType.Opponent : PlayerType.Player;
+    }
 
-        // Update game state, check for win/loss, etc.
+    public bool IsGameOver()
+    {
+        // Check if the game is over
+        return false;
+    }
+
+    public void ShowGameResults()
+    {
+        // Display the game results
     }
 }

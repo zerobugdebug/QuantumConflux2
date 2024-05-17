@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerStatsView.cs" />
-    <Compile Include="Assets\Scripts\Models\DeckModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentStatsView.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
@@ -71,10 +70,12 @@
     <Compile Include="Assets\Scripts\Models\OpponentModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
     <Compile Include="Assets\Scripts\Input\GameInputActions.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardController.cs" />
     <Compile Include="Assets\Scripts\Models\CardModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentHandView.cs" />
+    <Compile Include="Assets\Scripts\Models\GameStateModel.cs" />
     <Compile Include="Assets\Scripts\Views\CardView.cs" />
   </ItemGroup>
   <ItemGroup>
