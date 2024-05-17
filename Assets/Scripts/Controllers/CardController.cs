@@ -7,26 +7,20 @@ public class CardController : MonoBehaviour
     public Transform playerHandTransform;
     public Transform opponentHandTransform;
 
-    public void InstantiatePlayerHand(List<CardModel> playerHand)
+    public void InstantiateHand(List<CardModel> hand, CharacterHandView handView)
     {
-        foreach (var cardModel in playerHand)
+        foreach (var card in hand)
         {
-            InstantiateCard(cardModel, playerHandTransform);
+            InstantiateCard(card, handView.transform);
         }
+
+        handView.UpdateView(hand);
     }
 
-    public void InstantiateOpponentHand(List<CardModel> opponentHand)
-    {
-        foreach (var cardModel in opponentHand)
-        {
-            InstantiateCard(cardModel, opponentHandTransform);
-        }
-    }
-
-    private void InstantiateCard(CardModel cardModel, Transform parentTransform)
+    private void InstantiateCard(CardModel card, Transform parentTransform)
     {
         var cardObject = Instantiate(cardPrefab, parentTransform);
         var cardView = cardObject.GetComponent<CardView>();
-        cardView.UpdateView(cardModel);
+        cardView.UpdateView(card);
     }
 }

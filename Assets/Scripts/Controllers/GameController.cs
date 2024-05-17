@@ -25,6 +25,10 @@ public class GameController : MonoBehaviour
     public int PlayerLifePoints { get; private set; }
     public int OpponentLifePoints { get; private set; }
 
+    public PlayerController playerController;
+    public OpponentController opponentController;
+    public CardController cardController;
+
     void Start()
     {
         GameStateController.SetState(SetupGameState, this);
@@ -36,6 +40,11 @@ public class GameController : MonoBehaviour
         PlayerLifePoints = 12;
         OpponentLifePoints = 12;
         Debug.Log("Game Initialized");
+        
+        // Initialize player and opponent hands
+        cardController.InstantiateHand(playerController.character.Hand, playerController.playerHandView);
+        cardController.InstantiateHand(opponentController.character.Hand, opponentController.opponentHandView);
+
     }
 
     public void SelectStartingPlayer()
@@ -136,4 +145,15 @@ public class GameController : MonoBehaviour
         // This would typically involve the card played and the number of pillz assigned
         return Random.Range(1, 10); // Placeholder for actual calculation
     }
+
+    public CharacterController GetCurrentAttacker()
+    {
+        return CurrentTurnPlayer == PlayerType.Player ? playerController : opponentController;
+    }
+
+    public CharacterController GetCurrentDefender()
+    {
+        return CurrentTurnPlayer == PlayerType.Player ? opponentController : playerController;
+    }
+
 }
