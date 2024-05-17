@@ -1,0 +1,55 @@
+stateDiagram-v2
+    [*] --> SetupGame
+    SetupGame --> SelectStartingPlayer
+    SelectStartingPlayer --> TurnState
+    TurnState --> ResolveRound
+    ResolveRound --> SwitchRoles
+    SwitchRoles --> CheckGameEnd
+    CheckGameEnd --> TurnState: Game continues
+    CheckGameEnd --> EndGame: Game over
+    EndGame --> [*]
+
+    state SetupGame {
+        [*] --> InitializeGame
+        InitializeGame --> ShufflePlayerDecks
+        ShufflePlayerDecks --> DealInitialPlayerCards
+        DealInitialPlayerCards --> [*]
+    }
+
+    state SelectStartingPlayer {
+        [*] --> RandomSelect
+        RandomSelect --> [*]
+    }
+
+    state TurnState {
+        [*] --> AttackerChooseCard
+        AttackerChooseCard --> AttackerAssignPillz
+        AttackerAssignPillz --> AttackerPlayCard
+        AttackerPlayCard --> DefenderChooseCard
+        DefenderChooseCard --> DefenderAssignPillz
+        DefenderAssignPillz --> DefenderPlayCard
+        DefenderPlayCard --> [*]
+    }
+
+    state ResolveRound {
+        [*] --> CompareCards
+        CompareCards --> CalculateAttack
+        CalculateAttack --> UpdateLifePoints
+        UpdateLifePoints --> [*]
+    }
+
+    state SwitchRoles {
+        [*] --> SwapAttackerDefender
+        SwapAttackerDefender --> [*]
+    }
+
+    state CheckGameEnd {
+        [*] --> EvaluateGameStatus
+        EvaluateGameStatus --> [*]
+    }
+
+    state EndGame {
+        [*] --> DetermineWinner
+        DetermineWinner --> ShowResults
+        ShowResults --> [*]
+    }
