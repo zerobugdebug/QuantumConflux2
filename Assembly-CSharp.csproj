@@ -62,15 +62,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
+    <Compile Include="Assets\Scripts\Models\SwitchRolesStateModel.cs" />
+    <Compile Include="Assets\Scripts\Models\CheckGameEndStateModel.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerStatsView.cs" />
+    <Compile Include="Assets\Scripts\Models\TurnStateModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentStatsView.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerHandView.cs" />
+    <Compile Include="Assets\Scripts\Models\SelectStartingPlayerStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\OpponentModel.cs" />
+    <Compile Include="Assets\Scripts\Models\ResolveRoundStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
+    <Compile Include="Assets\Scripts\Models\SetupGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
+    <Compile Include="Assets\Scripts\Models\EndGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Input\GameInputActions.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardController.cs" />
     <Compile Include="Assets\Scripts\Models\CardModel.cs" />
