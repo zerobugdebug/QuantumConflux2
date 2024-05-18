@@ -3,9 +3,11 @@ using UnityEngine;
 public class OpponentController : CharacterController
 {
     public OpponentHandView opponentHandView;
+    public OpponentModel opponent;
 
     void Start()
     {
+        character = opponent = new OpponentModel();
         InitializeCharacter();
     }
 
@@ -13,14 +15,14 @@ public class OpponentController : CharacterController
     {
         // Placeholder for AI logic for selecting a card
         CardModel selectedCard = opponentHandView.SelectCard();
-        character.SelectedCard = selectedCard;
+        opponent.SelectedCard = selectedCard;
         return selectedCard;
     }
 
     public override int AssignPillz()
     {
         int assignedPillz = 3; // Placeholder for AI logic for assigning Pillz
-        character.SelectedCard.Pillz = assignedPillz;
+        opponent.SelectedCard.Pillz = assignedPillz;
         return assignedPillz;
     }
 }

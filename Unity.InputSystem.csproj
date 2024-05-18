@@ -213,8 +213,8 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\AssetEditor\InputBindingPropertiesView.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\Internal\EditorHelpers.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Events\InputEventTrace.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\UI\ExtendedAxisEventData.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\InputSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\UI\ExtendedAxisEventData.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\PredictiveParser.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\AssetEditor\InputActionEditorWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\InputMetrics.cs" />
@@ -286,8 +286,8 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\Interactions\PressInteraction.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\DynamicBitfield.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\UITKAssetEditor\StateContainer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\Composites\OneModifierComposite.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\PropertyDrawers\InputActionReferenceSearchProviders.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\Composites\OneModifierComposite.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\DisplayStringFormatAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Controls\Processors\CompensateRotationProcessor.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\Settings\InputSettingsProvider.cs" />
@@ -309,11 +309,11 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\InputActionReference.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\Internal\AdvancedDropdown\AdvancedDropdownWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\Debugger\InputDebuggerWindow.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\PlayerInput\PlayerInputManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\Internal\AdvancedDropdown\AdvancedDropdownItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\UITKAssetEditor\Views\DropManipulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\NativeInputRuntime.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\PlayerInput\PlayerInputManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\SpriteUtilities.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\NativeInputRuntime.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\UITKAssetEditor\Views\CollectionViewSelectionChangeFilter.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\UITKAssetEditor\SerializedInputBinding.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Editor\AssetImporter\InputActionCodeGenerator.cs" />
@@ -419,8 +419,8 @@
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Utilities\Observables\SelectObservable.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Devices\InputDevice.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\WebGL\WebGLGamepad.cs" />
-    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Events\IInputEventTypeInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\InputActionTrace.cs" />
+    <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Events\IInputEventTypeInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Controls\TouchPhaseControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Actions\Composites\ButtonWithTwoModifiers.cs" />
     <Compile Include="Library\PackageCache\com.unity.inputsystem\InputSystem\Plugins\EnhancedTouch\Finger.cs" />
@@ -945,30 +945,6 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.2f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="unityplastic">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
       <Private>False</Private>
@@ -977,8 +953,12 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
@@ -987,6 +967,26 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

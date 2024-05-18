@@ -42,8 +42,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Game Initialized");
         
         // Initialize player and opponent hands
-        cardController.InstantiateHand(playerController.character.Hand, playerController.playerHandView);
-        cardController.InstantiateHand(opponentController.character.Hand, opponentController.opponentHandView);
+        cardController.InstantiateHand(playerController.player.Hand, playerController.playerHandView);
+        cardController.InstantiateHand(opponentController.opponent.Hand, opponentController.opponentHandView);
 
     }
 
