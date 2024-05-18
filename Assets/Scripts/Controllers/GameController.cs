@@ -6,6 +6,16 @@ public enum PlayerType
     Opponent
 }
 
+public enum TurnPhase
+{
+    AttackerChooseCard,
+    AttackerAssignPillz,
+    AttackerPlayCard,
+    DefenderChooseCard,
+    DefenderAssignPillz,
+    DefenderPlayCard
+}
+
 public class GameController : MonoBehaviour
 {
     public GameStateController GameStateController;
@@ -18,6 +28,8 @@ public class GameController : MonoBehaviour
     public GameStateModel SwitchRolesState;
     public GameStateModel CheckGameEndState;
     public GameStateModel EndGameState;
+
+    public TurnPhase CurrentPhase { get; set; }
 
     // Game-specific variables
     public PlayerType CurrentTurnPlayer { get; private set; }
@@ -58,6 +70,7 @@ public class GameController : MonoBehaviour
     {
         // Logic for starting a turn
         TurnFinished = false;
+        CurrentPhase = TurnPhase.AttackerChooseCard;
         Debug.Log(CurrentTurnPlayer + "'s turn started.");
     }
 
