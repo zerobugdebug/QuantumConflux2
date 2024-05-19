@@ -1,0 +1,242 @@
+[
+    {
+        "Id": 1,
+        "Name": "ArcBlaze",
+        "Power": 4,
+        "Damage": 3,
+        "Abilities": [
+            "Arcane Burst"
+        ],
+        "Level": 1,
+        "MaxLevel": 5,
+        "Clan": "CyberWizards",
+        "Bonus": "Life Steal",
+        "Portrait": "path/to/portrait10.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 2,
+        "Name": "GlimFury",
+        "Power": 6,
+        "Damage": 2,
+        "Abilities": [
+            "Lightning Strike"
+        ],
+        "Level": 1,
+        "MaxLevel": 4,
+        "Clan": "CyberWizards",
+        "Bonus": "Damage Shield",
+        "Portrait": "path/to/portrait8.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 3,
+        "Name": "RuneStorm",
+        "Power": 4,
+        "Damage": 5,
+        "Abilities": [
+            "Energy Shield"
+        ],
+        "Level": 1,
+        "MaxLevel": 4,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Critical Hit",
+        "Portrait": "path/to/portrait12.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 4,
+        "Name": "TechSpark",
+        "Power": 2,
+        "Damage": 5,
+        "Abilities": [
+            "Shadow Cloak"
+        ],
+        "Level": 1,
+        "MaxLevel": 2,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Power Boost",
+        "Portrait": "path/to/portrait13.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 5,
+        "Name": "VoltLight",
+        "Power": 8,
+        "Damage": 1,
+        "Abilities": [
+            "Shadow Cloak"
+        ],
+        "Level": 1,
+        "MaxLevel": 2,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Damage Shield",
+        "Portrait": "path/to/portrait9.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 6,
+        "Name": "GlimSpark",
+        "Power": 5,
+        "Damage": 3,
+        "Abilities": [
+            "Arcane Burst"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Power Boost",
+        "Portrait": "path/to/portrait6.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 7,
+        "Name": "CyberLight",
+        "Power": 6,
+        "Damage": 3,
+        "Abilities": [
+            "Arcane Burst"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "CyberWizards",
+        "Bonus": "Critical Hit",
+        "Portrait": "path/to/portrait4.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 8,
+        "Name": "ArcStorm",
+        "Power": 2,
+        "Damage": 6,
+        "Abilities": [
+            "Teleport"
+        ],
+        "Level": 1,
+        "MaxLevel": 5,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Power Boost",
+        "Portrait": "path/to/portrait11.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 9,
+        "Name": "HexLight",
+        "Power": 3,
+        "Damage": 6,
+        "Abilities": [
+            "Fireball"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "ArcaneEngineers",
+        "Bonus": "Power Boost",
+        "Portrait": "path/to/portrait7.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 10,
+        "Name": "GlimLight",
+        "Power": 6,
+        "Damage": 1,
+        "Abilities": [
+            "Shadow Cloak"
+        ],
+        "Level": 1,
+        "MaxLevel": 5,
+        "Clan": "Technomancers",
+        "Bonus": "Life Steal",
+        "Portrait": "path/to/portrait1.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 11,
+        "Name": "HexLight",
+        "Power": 4,
+        "Damage": 4,
+        "Abilities": [
+            "Mana Drain"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "CyberWizards",
+        "Bonus": "Life Steal",
+        "Portrait": "path/to/portrait1.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 12,
+        "Name": "ArcBlaze",
+        "Power": 8,
+        "Damage": 1,
+        "Abilities": [
+            "Teleport"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "Technomancers",
+        "Bonus": "Damage Shield",
+        "Portrait": "path/to/portrait15.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 13,
+        "Name": "ArcStorm",
+        "Power": 1,
+        "Damage": 6,
+        "Abilities": [
+            "Energy Shield"
+        ],
+        "Level": 1,
+        "MaxLevel": 3,
+        "Clan": "ArcaneEngineers",
+        "Bonus": "Life Steal",
+        "Portrait": "path/to/portrait4.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 14,
+        "Name": "MageBlaze",
+        "Power": 7,
+        "Damage": 2,
+        "Abilities": [
+            "Arcane Burst"
+        ],
+        "Level": 1,
+        "MaxLevel": 2,
+        "Clan": "ArcaneEngineers",
+        "Bonus": "Life Steal",
+        "Portrait": "path/to/portrait13.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 15,
+        "Name": "VoltBlaze",
+        "Power": 4,
+        "Damage": 3,
+        "Abilities": [
+            "Fireball"
+        ],
+        "Level": 1,
+        "MaxLevel": 2,
+        "Clan": "MechaSorcerers",
+        "Bonus": "Damage Shield",
+        "Portrait": "path/to/portrait5.png",
+        "Pillz": 0
+    },
+    {
+        "Id": 16,
+        "Name": "TechShadow",
+        "Power": 2,
+        "Damage": 7,
+        "Abilities": [
+            "Arcane Burst"
+        ],
+        "Level": 1,
+        "MaxLevel": 5,
+        "Clan": "Technomancers",
+        "Bonus": "Power Boost",
+        "Portrait": "path/to/portrait11.png",
+        "Pillz": 0
+    }
+]

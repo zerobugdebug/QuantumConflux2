@@ -43,6 +43,11 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        if (GameStateController == null || playerController == null || opponentController == null || cardController == null)
+        {
+            Debug.LogError("One or more required components are not assigned in the inspector.");
+            return;
+        }
         GameStateController.SetState(SetupGameState, this);
     }
 

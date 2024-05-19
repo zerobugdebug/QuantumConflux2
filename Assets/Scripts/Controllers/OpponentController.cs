@@ -5,8 +5,14 @@ public class OpponentController : CharacterController
     public OpponentHandView opponentHandView;
     public OpponentModel opponent;
 
-    void Start()
+    void Awake()
     {
+        if (opponentHandView == null)
+        {
+            Debug.LogError("OpponentHandView is not assigned in the inspector.");
+            return;
+        }
+
         character = opponent = new OpponentModel();
         InitializeCharacter();
     }

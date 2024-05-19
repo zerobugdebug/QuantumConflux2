@@ -9,18 +9,19 @@ public class CardController : MonoBehaviour
 
     public void InstantiateHand(List<CardModel> hand, CharacterHandView handView)
     {
-        foreach (var card in hand)
+        foreach (CardModel card in hand)
         {
             InstantiateCard(card, handView.transform);
         }
 
         handView.UpdateView(hand);
+    
     }
 
     private void InstantiateCard(CardModel card, Transform parentTransform)
     {
-        var cardObject = Instantiate(cardPrefab, parentTransform);
-        var cardView = cardObject.GetComponent<CardView>();
+        GameObject cardObject = Instantiate(cardPrefab, parentTransform);
+        CardView cardView = cardObject.GetComponent<CardView>();
         cardView.UpdateView(card);
     }
 }

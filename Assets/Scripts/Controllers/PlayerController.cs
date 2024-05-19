@@ -5,8 +5,14 @@ public class PlayerController : CharacterController
     public PlayerHandView playerHandView;
     public PlayerModel player;
 
-    void Start()
+       void Awake()
     {
+        if (playerHandView == null)
+        {
+            Debug.LogError("PlayerHandView is not assigned in the inspector.");
+            return;
+        }
+
         character = player = new PlayerModel();
         InitializeCharacter();
     }

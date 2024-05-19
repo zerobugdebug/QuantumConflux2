@@ -63,11 +63,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
     <Compile Include="Assets\Scripts\Models\SwitchRolesStateModel.cs" />
+    <Compile Include="Assets\Scripts\Controllers\HandController.cs" />
     <Compile Include="Assets\Scripts\Models\CheckGameEndStateModel.cs" />
+    <Compile Include="Assets\Scripts\Models\HandModel.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerStatsView.cs" />
+    <Compile Include="Assets\Scripts\Models\DeckModel.cs" />
     <Compile Include="Assets\Scripts\Models\TurnStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\CharacterModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentStatsView.cs" />
+    <Compile Include="Assets\Scripts\Controllers\DeckController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerHandView.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
     <Compile Include="Assets\Scripts\Models\EndGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Input\GameInputActions.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CardDBController.cs" />
+    <Compile Include="Assets\Scripts\Models\CardDBModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardController.cs" />
     <Compile Include="Assets\Scripts\Views\CharacterHandView.cs" />
     <Compile Include="Assets\Scripts\Models\CardModel.cs" />

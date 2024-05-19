@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public abstract class CharacterController : MonoBehaviour
 {
     public CharacterModel character;
-    public CharacterHandView characterHandView;
+    private CharacterHandView characterHandView;
 
     protected virtual void InitializeCharacter()
     {
