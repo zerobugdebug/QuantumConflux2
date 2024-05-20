@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public enum PlayerType
 {
@@ -21,13 +22,13 @@ public class GameController : MonoBehaviour
     public GameStateController GameStateController;
 
     // References to GameState ScriptableObjects
-    public GameStateModel SetupGameState;
-    public GameStateModel SelectStartingPlayerState;
-    public GameStateModel TurnState;
-    public GameStateModel ResolveRoundState;
-    public GameStateModel SwitchRolesState;
-    public GameStateModel CheckGameEndState;
-    public GameStateModel EndGameState;
+    public SetupGameStateModel SetupGameState;
+    public SelectStartingPlayerStateModel SelectStartingPlayerState;
+    public TurnStateModel TurnState;
+    public ResolveRoundStateModel ResolveRoundState;
+    public SwitchRolesStateModel SwitchRolesState;
+    public CheckGameEndStateModel CheckGameEndState;
+    public EndGameStateModel EndGameState;
 
     public TurnPhase CurrentPhase { get; set; }
 
@@ -39,11 +40,12 @@ public class GameController : MonoBehaviour
 
     public PlayerController playerController;
     public OpponentController opponentController;
-    public CardController cardController;
+    public CardDBController cardDBController;
+    //public CardController cardController;
 
     void Start()
     {
-        if (GameStateController == null || playerController == null || opponentController == null || cardController == null)
+        if (GameStateController == null || playerController == null || opponentController == null)//|| cardDBController == null)
         {
             Debug.LogError("One or more required components are not assigned in the inspector.");
             return;
@@ -57,10 +59,36 @@ public class GameController : MonoBehaviour
         PlayerLifePoints = 12;
         OpponentLifePoints = 12;
         Debug.Log("Game Initialized");
-        
+
+        // Initialize player and opponent
+        playerController.Initialize(new CharacterModel());
+        opponentController.Initialize(new CharacterModel());
+
+        // Initialize player and opponent decks
+        //TODO: decks should be loaded from player/opponent profiles
+        var deckController = new DeckController();
+        deckController.AddCard(cardDBController.GetCardById(0));
+        deckController.AddCard(cardDBController.GetCardById(1));
+        deckController.AddCard(cardDBController.GetCardById(2));
+        deckController.AddCard(cardDBController.GetCardById(3));
+        deckController.AddCard(cardDBController.GetCardById(4));
+        deckController.AddCard(cardDBController.GetCardById(5));
+        deckController.AddCard(cardDBController.GetCardById(6));
+        deckController.AddCard(cardDBController.GetCardById(7));
+
+        playerController.AddDeck(deckController);
+        playerController.SelectDeck(deckController);
+        opponentController.AddDeck(deckController);
+        opponentController.SelectDeck(deckController);
+
         // Initialize player and opponent hands
-        cardController.InstantiateHand(playerController.player.Hand, playerController.playerHandView);
-        cardController.InstantiateHand(opponentController.opponent.Hand, opponentController.opponentHandView);
+        playerController.GenerateHand();
+        opponentController.GenerateHand();
+
+        // Update hands views
+        playerController.UpdateView();
+        opponentController.UpdateView();
+
 
     }
 

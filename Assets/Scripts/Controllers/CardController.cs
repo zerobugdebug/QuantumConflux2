@@ -3,25 +3,42 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    public GameObject cardPrefab;
-    public Transform playerHandTransform;
-    public Transform opponentHandTransform;
+    private CardModel card;
+    private CardView cardView;
 
-    public void InstantiateHand(List<CardModel> hand, CharacterHandView handView)
+    [SerializeField]
+    private GameObject cardPrefab;
+
+
+    // Method to instantiate a card and assign its view
+    public void InstantiateCard(CardModel card, Transform parent = null)
     {
-        foreach (CardModel card in hand)
+        this.card = card;
+
+        GameObject cardObject = Instantiate(cardPrefab, parent);
+
+        if (cardObject.TryGetComponent(out cardView))
         {
-            InstantiateCard(card, handView.transform);
+            cardView.UpdateView(card);
         }
-
-        handView.UpdateView(hand);
-    
+        else
+        {
+            Debug.LogError("View is not assigned to cardPrefab");
+            return;
+        }
     }
 
-    private void InstantiateCard(CardModel card, Transform parentTransform)
+    // Method to update the card view with the current card model
+    public void UpdateView()
     {
-        GameObject cardObject = Instantiate(cardPrefab, parentTransform);
-        CardView cardView = cardObject.GetComponent<CardView>();
-        cardView.UpdateView(card);
+        if (cardView != null && card != null)
+        {
+            cardView.UpdateView(card);
+        }
+        else
+        {
+            Debug.LogError("CardView or CardModel is null");
+        }
     }
+    
 }

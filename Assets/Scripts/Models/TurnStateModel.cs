@@ -51,50 +51,50 @@ public class TurnStateModel : GameStateModel
     private void AttackerChooseCard(GameController gameController)
     {
         CharacterController attacker = gameController.GetCurrentAttacker();
-        CardModel selectedCard = attacker.SelectCard();
-        attacker.character.SelectedCard = selectedCard;
-        Debug.Log("Attacker has chosen card: " + selectedCard.Name);
+        CardController selectedCard = attacker.SelectCard();
+        //attacker.character.SelectedCard = selectedCard;
+        Debug.Log("Attacker has chosen card: " + selectedCard.name);
     }
 
     private void AttackerAssignPillz(GameController gameController)
     {
         CharacterController attacker = gameController.GetCurrentAttacker();
         int assignedPillz = attacker.AssignPillz();
-        attacker.character.SelectedCard.Pillz = assignedPillz;
-        attacker.character.Pillz -= assignedPillz;
-        Debug.Log("Attacker has assigned " + assignedPillz + " Pillz to card: " + attacker.character.SelectedCard.Name);
+        //attacker.character.SelectedCard.Pillz = assignedPillz;
+        //attacker.character.Pillz -= assignedPillz;
+        Debug.Log("Attacker has assigned " + assignedPillz + " Pillz to card: " + assignedPillz);
     }
 
     private void AttackerPlayCard(GameController gameController)
     {
         CharacterController attacker = gameController.GetCurrentAttacker();
-        CardModel card = attacker.character.SelectedCard;
-        Debug.Log("Attacker plays card: " + card.Name);
+        CardController card = attacker.GetCurrentCard();
+        Debug.Log("Attacker plays card: " + card.name);
         // Additional logic for pre-battle abilities can be implemented here.
     }
 
     private void DefenderChooseCard(GameController gameController)
     {
         CharacterController defender = gameController.GetCurrentDefender();
-        CardModel selectedCard = defender.SelectCard();
-        defender.character.SelectedCard = selectedCard;
-        Debug.Log("Defender has chosen card: " + selectedCard.Name);
+        CardController selectedCard = defender.SelectCard();
+        //defender.character.SelectedCard = selectedCard;
+        Debug.Log("Defender has chosen card: " + selectedCard.name);
     }
 
     private void DefenderAssignPillz(GameController gameController)
     {
         CharacterController defender = gameController.GetCurrentDefender();
         int assignedPillz = defender.AssignPillz();
-        defender.character.SelectedCard.Pillz = assignedPillz;
-        defender.character.Pillz -= assignedPillz;
-        Debug.Log("Defender has assigned " + assignedPillz + " Pillz to card: " + defender.character.SelectedCard.Name);
+        //defender.character.SelectedCard.Pillz = assignedPillz;
+        //defender.character.Pillz -= assignedPillz;
+        Debug.Log("Defender has assigned " + assignedPillz + " Pillz to card: " + assignedPillz);
     }
 
     private void DefenderPlayCard(GameController gameController)
     {
         CharacterController defender = gameController.GetCurrentDefender();
-        CardModel card = defender.character.SelectedCard;
-        Debug.Log("Defender plays card: " + card.Name);
+        CardController card = defender.GetCurrentCard();
+        Debug.Log("Defender plays card: " + card.name);
         // Additional logic for pre-battle abilities can be implemented here.
     }
 }

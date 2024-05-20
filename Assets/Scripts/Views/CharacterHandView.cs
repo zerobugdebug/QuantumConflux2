@@ -3,32 +3,31 @@ using UnityEngine;
 
 public class CharacterHandView : MonoBehaviour
 {
-    public List<CardView> handCards;
-
-    public void UpdateView(List<CardModel> hand)
+    // Method to update the hand view with a list of card controllers
+    public void UpdateView(List<CardController> cardControllers)
     {
-        if (hand == null)
+        if (cardControllers == null || cardControllers.Count == 0)
         {
-            Debug.LogError("Hand is null");
+            Debug.LogError("CardControllers list is null or empty");
             return;
         }
 
-        for (int i = 0; i < handCards.Count && i < hand.Count; i++)
+        // Update each card view with the corresponding card controller
+        foreach (CardController cardController in cardControllers)
         {
-            handCards[i].UpdateView(hand[i]);
+            if (cardController == null)
+            {
+                Debug.LogError("CardController is null");
+                continue;
+            }
+
+            cardController.UpdateView();
         }
     }
 
-    public CardModel SelectCard()
+    // TODO: Method to select a card from the hand
+    public CardController SelectCard()
     {
-        // For simplicity, let's assume the first card is selected.
-        // This should be replaced with actual selection logic.
-        if (handCards.Count > 0)
-        {
-            return handCards[0].Card;
-        }
-
-        Debug.LogError("No cards available to select.");
-        return null;
+        return null; 
     }
 }

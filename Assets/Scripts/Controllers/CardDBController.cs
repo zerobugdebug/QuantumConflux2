@@ -2,21 +2,23 @@
 
 public class CardDBController : MonoBehaviour
 {
-    public CardDBModel CardDB { get; private set; }
+    private CardDBModel cardDB;
 
-    private void Awake()
+    // Method to initialize the card database model
+    public void Initialize(CardDBModel cardDB)
     {
-        CardDB = new CardDBModel();
-        // TODO: Load cards into the database
+        this.cardDB = cardDB;
     }
 
-    public void AddCardToDatabase(CardModel card)
+    // Method to add a card to the database
+    public void AddCard(CardController card)
     {
-        CardDB.AddCard(card);
+        cardDB.AddCard(card);
     }
 
-    public CardModel GetCardById(int id)
+    // Method to get a card by its ID
+    public CardController GetCardById(int id)
     {
-        return CardDB.GetCardById(id);
+        return cardDB.GetCardById(id);
     }
 }

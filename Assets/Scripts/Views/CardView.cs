@@ -4,22 +4,17 @@ using UnityEngine.UI;
 
 public class CardView : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI powerText;
-    public TextMeshProUGUI damageText;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI clanText;
-    public TextMeshProUGUI bonusText;
-    public Image portraitImage;  // Reference to the Image component
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI powerText;
+    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI clanText;
+    [SerializeField] private TextMeshProUGUI bonusText;
+    [SerializeField] private Image portraitImage;
 
-    private CardModel card;  // Field to hold the corresponding model for the Card
+    private CardModel card;
 
-    // Property to access the CardModel
-    public CardModel Card
-    {
-        get { return card; }
-    }
-
+    // Method to update the view with card details
     public void UpdateView(CardModel card)
     {
         if (card == null)
@@ -28,14 +23,14 @@ public class CardView : MonoBehaviour
             return;
         }
 
-        this.card = card;  // Set the CardModel
+        this.card = card;
 
-        nameText.text = card.Name;
-        powerText.text = card.Power.ToString();
-        damageText.text = card.Damage.ToString();
-        levelText.text = $"Level: {card.Level}/{card.MaxLevel}";
-        clanText.text = card.Clan;
-        bonusText.text = card.Bonus;
-        portraitImage.sprite = card.Portrait;  // Update the portrait image
+        nameText.text = this.card.Name;
+        powerText.text = this.card.Power.ToString();
+        damageText.text = this.card.Damage.ToString();
+        levelText.text = $"Level: {this.card.Level}/{this.card.MaxLevel}";
+        clanText.text = this.card.Clan;
+        bonusText.text = this.card.Bonus;
+        portraitImage.sprite = this.card.Portrait;
     }
 }

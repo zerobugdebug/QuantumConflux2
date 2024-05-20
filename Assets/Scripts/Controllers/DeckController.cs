@@ -1,17 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckController : MonoBehaviour
+public class DeckController
 {
-    public DeckModel Deck { get; private set; }
+    private DeckModel deck;
 
-    private void Awake()
+    // Method to initialize the deck model
+    public void Initialize(DeckModel deck)
     {
-        Deck = new DeckModel();
+        this.deck = deck;
     }
 
-    public void AddCardToDeck(CardModel card)
+
+    public void AddCard(CardController card)
     {
-        Deck.AddCard(card);
+        deck.AddCard(card);
     }
+
+    public void RemoveCard(CardController card)
+    {
+        deck.RemoveCard(card);
+    }
+
+    public CardController DrawCard()
+    {
+        return deck.DrawCard();
+    }
+
 }

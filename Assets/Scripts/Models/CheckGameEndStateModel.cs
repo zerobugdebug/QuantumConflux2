@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "GameStates/CheckGameEndState")]
-public class CheckGameEndState : GameStateModel
+public class CheckGameEndStateModel : GameStateModel
 {
     public override void OnEnter(GameController gameController)
     {

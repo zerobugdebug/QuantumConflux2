@@ -2,32 +2,32 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-    public PlayerHandView playerHandView;
+    //public PlayerHandView playerHandView;
     public PlayerModel player;
 
        void Awake()
     {
-        if (playerHandView == null)
+        if (characterHandView == null)
         {
             Debug.LogError("PlayerHandView is not assigned in the inspector.");
             return;
         }
 
         character = player = new PlayerModel();
-        InitializeCharacter();
+        //InitializeCharacter();
     }
 
-    public override CardModel SelectCard()
+    public override CardController SelectCard()
     {
-        CardModel selectedCard = playerHandView.SelectCard();
-        player.SelectedCard = selectedCard;
+        CardController selectedCard = characterHandView.SelectCard();
+        this.selectedCard = selectedCard;
         return selectedCard;
     }
 
     public override int AssignPillz()
     {
         int assignedPillz = 3; // Placeholder for actual Pillz assignment logic
-        player.SelectedCard.Pillz = assignedPillz;
+        //player.SelectedCard.Pillz = assignedPillz;
         return assignedPillz;
     }
 }

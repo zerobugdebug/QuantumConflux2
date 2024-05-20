@@ -3,27 +3,54 @@ using UnityEngine;
 
 public class HandModel
 {
-    public List<CardModel> Cards { get; private set; }
+    private readonly List<CardController> cardControllers;
 
-    public HandModel()
+    /// <summary>
+    /// Adds a card to the hand if the hand contains less than 4 cards.
+    /// </summary>
+    /// <param name="card">The card to add to the hand.</param>
+    public void AddCard(CardController cardController)
     {
-        Cards = new List<CardModel>();
+        if (cardControllers.Count < 4)
+        {
+            cardControllers.Add(cardController);
+        }
+        else
+        {
+            Debug.LogError("Hand cannot contain more than 4 cards.");
+        }
     }
 
-    public void DrawHand(DeckModel deck)
+    /// <summary>
+    /// Draws a random card from the deck and removes it from the hand.
+    /// </summary>
+    /// <returns>The drawn CardModel if available, otherwise null.</returns>    
+    public CardController DrawCard()
     {
-        Cards.Clear();
-        List<CardModel> deckCards = new(deck.Cards);
-        for (int i = 0 ; i < 4 ; i++)
+        if (cardControllers.Count == 0)
         {
-            if (deckCards.Count == 0)
-            {
-                Debug.LogError("Deck does not have enough cards to draw a full hand.");
-                break;
-            }
-            int randomIndex = Random.Range(0, deckCards.Count);
-            Cards.Add(deckCards[randomIndex]);
-            deckCards.RemoveAt(randomIndex);
+            Debug.LogError("No cards available in the hand to draw.");
+            return null;
         }
+        int randomIndex = Random.Range(0, cardControllers.Count);
+        CardController drawnCard = cardControllers[randomIndex];
+        cardControllers.RemoveAt(randomIndex);
+        return drawnCard;
+    }
+    public void RemoveCard(CardController cardController)
+    {
+        if (cardControllers.Count > 1)
+        {
+            cardControllers.Remove(cardController);
+        }
+        else
+        {
+            Debug.LogError("Hand is empty.");
+        }
+    }
+
+    internal List<CardController> GetCards()
+    {
+        return cardControllers;
     }
 }

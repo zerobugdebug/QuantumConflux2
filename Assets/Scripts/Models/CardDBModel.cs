@@ -3,27 +3,30 @@ using System.Collections.Generic;
 
 public class CardDBModel
 {
-    public List<CardModel> AllCards { get; private set; }
+    private readonly List<CardController> cards;
 
     public CardDBModel()
     {
-        AllCards = new List<CardModel>();
+        cards = new List<CardController>();
     }
 
-    public void AddCard(CardModel card)
+    // Method to add a card to the list if it doesn't already exist
+    public void AddCard(CardController card)
     {
-        if (!AllCards.Exists(c => c.Id == card.Id))
+        cards.Add(card);
+/*        if (!cards.Exists(c => c.Id == card.Id))
         {
-            AllCards.Add(card);
+            cards.Add(card);
         }
         else
         {
             Debug.LogError("Card with the same ID already exists in the database.");
         }
-    }
+*/    }
 
-    public CardModel GetCardById(int id)
+    // Method to find and return a card by its ID
+    public CardController GetCardById(int id)
     {
-        return AllCards.Find(c => c.Id == id);
+        return cards[id];
     }
 }

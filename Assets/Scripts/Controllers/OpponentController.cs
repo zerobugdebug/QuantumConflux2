@@ -2,33 +2,33 @@ using UnityEngine;
 
 public class OpponentController : CharacterController
 {
-    public OpponentHandView opponentHandView;
+    //public OpponentHandView opponentHandView;
     public OpponentModel opponent;
 
     void Awake()
     {
-        if (opponentHandView == null)
+        if (characterHandView == null)
         {
             Debug.LogError("OpponentHandView is not assigned in the inspector.");
             return;
         }
 
         character = opponent = new OpponentModel();
-        InitializeCharacter();
+       // Initialize();
     }
 
-    public override CardModel SelectCard()
+    public override CardController SelectCard()
     {
         // Placeholder for AI logic for selecting a card
-        CardModel selectedCard = opponentHandView.SelectCard();
-        opponent.SelectedCard = selectedCard;
+        CardController selectedCard = characterHandView.SelectCard();
+        this.selectedCard = selectedCard;
         return selectedCard;
     }
 
     public override int AssignPillz()
     {
         int assignedPillz = 3; // Placeholder for AI logic for assigning Pillz
-        opponent.SelectedCard.Pillz = assignedPillz;
+        //opponent.SelectedCard.Pillz = assignedPillz;
         return assignedPillz;
     }
 }

@@ -172,7 +172,7 @@ MonoBehaviour:
   EndGameState: {fileID: 11400000, guid: 8dd0122315bb9ed4b8c14a9892608706, type: 2}
   playerController: {fileID: 176422668}
   opponentController: {fileID: 958374850}
-  cardController: {fileID: 119713628}
+  cardDBController: {fileID: 0}
 --- !u!1 &43774793
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,8 +443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 8885283474318401792, guid: 1e14cf8db0a7e2041906d05a3d7a8019, type: 3}
-  playerHandTransform: {fileID: 1258657524}
-  opponentHandTransform: {fileID: 1795793664}
 --- !u!1 &176422666
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa9f20395bd54a44ae5332f0467e81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHandView: {fileID: 1258657528}
+  characterHandView: {fileID: 1258657528}
 --- !u!1 &299643328
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb1ded67b1384c469199eba7ce266de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponentHandView: {fileID: 1795793668}
+  characterHandView: {fileID: 1795793668}
 --- !u!1 &1258657523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d887783fca2c130419b63675a2d5de9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handCards: []
 --- !u!1 &1662034015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1182,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707190796}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1707190798
 Camera:
   m_ObjectHideFlags: 0
@@ -1530,7 +1527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43108ca3595ab14595a5537154d3e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handCards: []
 --- !u!1 &1899071710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2261a3c7c7cc40849841a88a4c1449d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 39215423}
 --- !u!4 &1899071712
 Transform:
   m_ObjectHideFlags: 0
