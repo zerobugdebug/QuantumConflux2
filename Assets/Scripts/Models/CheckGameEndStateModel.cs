@@ -7,11 +7,11 @@ public class CheckGameEndStateModel : GameStateModel
     {
         if (gameController.IsGameOver())
         {
-            gameController.GameStateController.SetState(gameController.EndGameState, gameController);
+            gameController.gameStateController.SetState(gameController.endGameState, gameController);
         }
         else
         {
-            gameController.GameStateController.SetState(gameController.TurnState, gameController);
+            gameController.gameStateController.SetState(gameController.turnState, gameController);
         }
     }
 

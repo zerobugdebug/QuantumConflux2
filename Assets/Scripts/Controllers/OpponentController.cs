@@ -3,7 +3,7 @@ using UnityEngine;
 public class OpponentController : CharacterController
 {
     //public OpponentHandView opponentHandView;
-    public OpponentModel opponent;
+    public OpponentModel opponentModel;
 
     void Awake()
     {
@@ -13,7 +13,7 @@ public class OpponentController : CharacterController
             return;
         }
 
-        character = opponent = new OpponentModel();
+        characterModel = opponentModel = new OpponentModel();
        // Initialize();
     }
 

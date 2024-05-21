@@ -4,30 +4,30 @@ using UnityEngine;
 public class CharacterHandView : MonoBehaviour
 {
     // Method to update the hand view with a list of card controllers
-    public void UpdateView(List<CardController> cardControllers)
+    public void UpdateView(List<CardController> cards)
     {
-        if (cardControllers == null || cardControllers.Count == 0)
+        if (cards == null || cards.Count == 0)
         {
             Debug.LogError("CardControllers list is null or empty");
             return;
         }
 
         // Update each card view with the corresponding card controller
-        foreach (CardController cardController in cardControllers)
+        foreach (CardController card in cards)
         {
-            if (cardController == null)
+            if (card == null)
             {
                 Debug.LogError("CardController is null");
                 continue;
             }
 
-            cardController.UpdateView();
+            card.UpdateView();
         }
     }
 
     // TODO: Method to select a card from the hand
     public CardController SelectCard()
     {
-        return null; 
+        return null;
     }
 }

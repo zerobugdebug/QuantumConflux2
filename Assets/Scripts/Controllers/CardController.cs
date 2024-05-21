@@ -3,23 +3,25 @@ using UnityEngine;
 
 public class CardController : MonoBehaviour
 {
-    private CardModel card;
+    private CardModel cardModel;
     private CardView cardView;
 
     [SerializeField]
     private GameObject cardPrefab;
 
+    public void Initialize(CardModel cardModel)
+    {
+        this.cardModel = cardModel;
+    }
 
     // Method to instantiate a card and assign its view
-    public void InstantiateCard(CardModel card, Transform parent = null)
+    public void InstantiateCard(Transform parent = null)
     {
-        this.card = card;
-
         GameObject cardObject = Instantiate(cardPrefab, parent);
 
         if (cardObject.TryGetComponent(out cardView))
         {
-            cardView.UpdateView(card);
+            cardView.UpdateView(cardModel);
         }
         else
         {
@@ -31,14 +33,14 @@ public class CardController : MonoBehaviour
     // Method to update the card view with the current card model
     public void UpdateView()
     {
-        if (cardView != null && card != null)
+        if (cardView != null && cardModel != null)
         {
-            cardView.UpdateView(card);
+            cardView.UpdateView(cardModel);
         }
         else
         {
             Debug.LogError("CardView or CardModel is null");
         }
     }
-    
+
 }

@@ -2,28 +2,28 @@ using UnityEngine;
 
 public class GameStateController : MonoBehaviour
 {
-    public GameController gameController;  // Public variable for GameController
+    public GameController game;  // Public variable for GameController
 
     private GameStateModel currentState;
 
-    public void SetState(GameStateModel newState, GameController gameController)
+    public void SetState(GameStateModel newState, GameController game)
     {
         if (currentState != null)
         {
-            currentState.OnExit(gameController);
+            currentState.OnExit(game);
         }
 
         currentState = newState;
 
         if (currentState != null)
         {
-            currentState.OnEnter(gameController);
+            currentState.OnEnter(game);
         }
     }
 
     void Update()
     {
-        if (gameController == null)
+        if (game == null)
         {
             Debug.LogError("GameController reference is not set in the inspector.");
             return;
@@ -31,7 +31,7 @@ public class GameStateController : MonoBehaviour
 
         if (currentState != null)
         {
-            currentState.OnUpdate(gameController);
+            currentState.OnUpdate(game);
         }
     }
 }

@@ -3,28 +3,32 @@ using UnityEngine;
 
 public class DeckController
 {
-    private DeckModel deck;
+    private DeckModel deckModel;
+    public DeckController()
+    {
+        this.deckModel = new DeckModel();
+    }
 
     // Method to initialize the deck model
-    public void Initialize(DeckModel deck)
+    public void Initialize(DeckModel deckModel)
     {
-        this.deck = deck;
+        this.deckModel = deckModel;
     }
 
 
     public void AddCard(CardController card)
     {
-        deck.AddCard(card);
+        deckModel.AddCard(card);
     }
 
     public void RemoveCard(CardController card)
     {
-        deck.RemoveCard(card);
+        deckModel.RemoveCard(card);
     }
 
     public CardController DrawCard()
     {
-        return deck.DrawCard();
+        return deckModel.DrawCard();
     }
 
 }

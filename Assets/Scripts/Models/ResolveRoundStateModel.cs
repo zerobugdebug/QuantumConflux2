@@ -6,7 +6,7 @@ public class ResolveRoundStateModel : GameStateModel
     public override void OnEnter(GameController gameController)
     {
         gameController.ResolveRound();
-        gameController.GameStateController.SetState(gameController.SwitchRolesState, gameController);
+        gameController.gameStateController.SetState(gameController.switchRolesState, gameController);
     }
 
     public override void OnExit(GameController gameController) { }

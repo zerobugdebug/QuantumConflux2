@@ -12,25 +12,25 @@ public class CardView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bonusText;
     [SerializeField] private Image portraitImage;
 
-    private CardModel card;
+    private CardModel cardModel;
 
     // Method to update the view with card details
-    public void UpdateView(CardModel card)
+    public void UpdateView(CardModel cardModel)
     {
-        if (card == null)
+        if (cardModel == null)
         {
             Debug.LogError("CardModel is null");
             return;
         }
 
-        this.card = card;
+        this.cardModel = cardModel;
 
-        nameText.text = this.card.Name;
-        powerText.text = this.card.Power.ToString();
-        damageText.text = this.card.Damage.ToString();
-        levelText.text = $"Level: {this.card.Level}/{this.card.MaxLevel}";
-        clanText.text = this.card.Clan;
-        bonusText.text = this.card.Bonus;
-        portraitImage.sprite = this.card.Portrait;
+        nameText.text = this.cardModel.Name;
+        powerText.text = this.cardModel.Power.ToString();
+        damageText.text = this.cardModel.Damage.ToString();
+        levelText.text = $"Level: {this.cardModel.Level}/{this.cardModel.MaxLevel}";
+        clanText.text = this.cardModel.Clan;
+        bonusText.text = this.cardModel.Bonus;
+        portraitImage.sprite = this.cardModel.Portrait;
     }
 }

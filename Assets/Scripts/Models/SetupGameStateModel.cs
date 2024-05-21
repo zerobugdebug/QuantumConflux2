@@ -6,7 +6,7 @@ public class SetupGameStateModel : GameStateModel
     public override void OnEnter(GameController gameController)
     {
         gameController.InitializeGame();
-        gameController.GameStateController.SetState(gameController.SelectStartingPlayerState, gameController);
+        gameController.gameStateController.SetState(gameController.selectStartingPlayerState, gameController);
     }
 
     public override void OnExit(GameController gameController) { }

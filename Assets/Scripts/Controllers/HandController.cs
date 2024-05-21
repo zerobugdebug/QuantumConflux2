@@ -3,38 +3,39 @@ using System.Collections.Generic;
 
 public class HandController
 {
-    private readonly HandModel hand;
+    private HandModel handModel;
 
     /// <summary>
     /// Initializes the hand by drawing a specified number of cards from the deck.
     /// </summary>
-    /// <param name="deckController">The controller responsible for the deck.</param>
+    /// <param name="deck">The controller responsible for the deck.</param>
     /// <param name="numberOfCards">The number of cards to draw from the deck.</param>
-    public void InitializeHand(DeckController deckController, int numberOfCards)
+    public void InitializeHand(DeckController deck, int numberOfCards)
     {
+        handModel=new HandModel();
         for (int i = 0 ; i < numberOfCards ; i++)
         {
-            CardController drawnCard = deckController.DrawCard();
+            CardController drawnCard = deck.DrawCard();
             if (drawnCard != null)
             {
-                hand.AddCard(drawnCard);
+                handModel.AddCard(drawnCard);
             }
         }
     }
 
     public void AddCard(CardController card)
     {
-        hand.AddCard(card);
+        handModel.AddCard(card);
     }
 
     public void RemoveCard(CardController card)
     {
-        hand.RemoveCard(card);
+        handModel.RemoveCard(card);
     }
 
     public CardController DrawCard()
     {
-        return hand.DrawCard();
+        return handModel.DrawCard();
     }
 
     internal void UpdateView()
@@ -44,6 +45,6 @@ public class HandController
 
     internal List<CardController> GetCards()
     {
-        return hand.GetCards();
+        return handModel.GetCards();
     }
 }

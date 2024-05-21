@@ -6,7 +6,7 @@ public class SwitchRolesStateModel : GameStateModel
     public override void OnEnter(GameController gameController)
     {
         gameController.SwitchRoles();
-        gameController.GameStateController.SetState(gameController.CheckGameEndState, gameController);
+        gameController.gameStateController.SetState(gameController.checkGameEndState, gameController);
     }
 
     public override void OnExit(GameController gameController) { }

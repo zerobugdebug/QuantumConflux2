@@ -3,27 +3,29 @@ using System.Collections.Generic;
 
 public abstract class CharacterController : MonoBehaviour
 {
-    protected CharacterModel character;
-    private HandController handController;
-    private DeckController selectedDeckController;
-    private readonly List<DeckController> deckControllers;
+    protected CharacterModel characterModel;
+    private HandController hand;
+    private DeckController selectedDeck;
+    private List<DeckController> decks;
     protected CardController selectedCard;
     [SerializeField] protected CharacterHandView characterHandView;
-    //TODO: [SerializeField] private CharacterStatsView characterStatsView;
+    // TODO: [SerializeField] private CharacterStatsView characterStatsView;
 
     // Method to initialize the character's hand
-    public virtual void Initialize(CharacterModel character)
+    public virtual void Initialize(CharacterModel characterModel)
     {
-        this.character = character;
-        handController= new HandController();
+        this.characterModel = characterModel;
+        hand = new HandController();
+        decks= new List<DeckController>();
+        selectedDeck= new DeckController();
     }
 
     // Method to add a deck to character
-    public virtual void AddDeck(DeckController deckController)
+    public virtual void AddDeck(DeckController deck)
     {
-        if (deckControllers.Count <16)
+        if (decks.Count < 16)
         {
-            deckControllers.Add(deckController);
+            decks.Add(deck);
         }
         else
         {
@@ -32,11 +34,11 @@ public abstract class CharacterController : MonoBehaviour
     }
 
     // Method to remove a deck from a character
-    public void RemoveDeck(DeckController deckController)
+    public void RemoveDeck(DeckController deck)
     {
-        if (deckControllers.Count > 1)
+        if (decks.Count > 1)
         {
-            deckControllers.Remove(deckController);
+            decks.Remove(deck);
         }
         else
         {
@@ -44,27 +46,27 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-        // Method to select a deck
-    public void SelectDeck(DeckController deckController)
+    // Method to select a deck
+    public void SelectDeck(DeckController deck)
     {
-        if (deckController == null)
+        if (deck == null)
         {
             Debug.LogError("Can't select empty deck");
             return;
         }
-        selectedDeckController = deckController;
+        selectedDeck = deck;
     }
 
     // Method to generate a hand from provided deck
     public void GenerateHand()
     {
 
-        if (selectedDeckController == null)
+        if (selectedDeck == null)
         {
             Debug.LogError("No deck selected");
             return;
         }
-        handController.InitializeHand(selectedDeckController, 4);
+        hand.InitializeHand(selectedDeck, 4);
     }
 
     // Method to shuffle the deck
@@ -81,7 +83,7 @@ public abstract class CharacterController : MonoBehaviour
 
     public void UpdateView()
     {
-        characterHandView.UpdateView(handController.GetCards());
+        characterHandView.UpdateView(hand.GetCards());
     }
 
     public CardController GetCurrentCard()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public enum PlayerType
 {
@@ -19,16 +18,16 @@ public enum TurnPhase
 
 public class GameController : MonoBehaviour
 {
-    public GameStateController GameStateController;
+    public GameStateController gameStateController;
 
     // References to GameState ScriptableObjects
-    public SetupGameStateModel SetupGameState;
-    public SelectStartingPlayerStateModel SelectStartingPlayerState;
-    public TurnStateModel TurnState;
-    public ResolveRoundStateModel ResolveRoundState;
-    public SwitchRolesStateModel SwitchRolesState;
-    public CheckGameEndStateModel CheckGameEndState;
-    public EndGameStateModel EndGameState;
+    public SetupGameStateModel setupGameState;
+    public SelectStartingPlayerStateModel selectStartingPlayerState;
+    public TurnStateModel turnState;
+    public ResolveRoundStateModel resolveRoundState;
+    public SwitchRolesStateModel switchRolesState;
+    public CheckGameEndStateModel checkGameEndState;
+    public EndGameStateModel endGameState;
 
     public TurnPhase CurrentPhase { get; set; }
 
@@ -41,16 +40,17 @@ public class GameController : MonoBehaviour
     public PlayerController playerController;
     public OpponentController opponentController;
     public CardDBController cardDBController;
-    //public CardController cardController;
+
 
     void Start()
     {
-        if (GameStateController == null || playerController == null || opponentController == null)//|| cardDBController == null)
+        if (gameStateController == null || playerController == null || opponentController == null || cardDBController == null)
         {
             Debug.LogError("One or more required components are not assigned in the inspector.");
             return;
         }
-        GameStateController.SetState(SetupGameState, this);
+        cardDBController.Initialize(new CardDBModel());
+        gameStateController.SetState(setupGameState, this);
     }
 
     public void InitializeGame()
@@ -65,21 +65,20 @@ public class GameController : MonoBehaviour
         opponentController.Initialize(new CharacterModel());
 
         // Initialize player and opponent decks
-        //TODO: decks should be loaded from player/opponent profiles
-        var deckController = new DeckController();
-        deckController.AddCard(cardDBController.GetCardById(0));
-        deckController.AddCard(cardDBController.GetCardById(1));
-        deckController.AddCard(cardDBController.GetCardById(2));
-        deckController.AddCard(cardDBController.GetCardById(3));
-        deckController.AddCard(cardDBController.GetCardById(4));
-        deckController.AddCard(cardDBController.GetCardById(5));
-        deckController.AddCard(cardDBController.GetCardById(6));
-        deckController.AddCard(cardDBController.GetCardById(7));
+        DeckController deck = new DeckController();
+        deck.AddCard(cardDBController.GetCardById(0));
+        deck.AddCard(cardDBController.GetCardById(1));
+        deck.AddCard(cardDBController.GetCardById(2));
+        deck.AddCard(cardDBController.GetCardById(3));
+        deck.AddCard(cardDBController.GetCardById(4));
+        deck.AddCard(cardDBController.GetCardById(5));
+        deck.AddCard(cardDBController.GetCardById(6));
+        deck.AddCard(cardDBController.GetCardById(7));
 
-        playerController.AddDeck(deckController);
-        playerController.SelectDeck(deckController);
-        opponentController.AddDeck(deckController);
-        opponentController.SelectDeck(deckController);
+        playerController.AddDeck(deck);
+        playerController.SelectDeck(deck);
+        opponentController.AddDeck(deck);
+        opponentController.SelectDeck(deck);
 
         // Initialize player and opponent hands
         playerController.GenerateHand();
@@ -88,8 +87,6 @@ public class GameController : MonoBehaviour
         // Update hands views
         playerController.UpdateView();
         opponentController.UpdateView();
-
-
     }
 
     public void SelectStartingPlayer()
@@ -201,5 +198,4 @@ public class GameController : MonoBehaviour
     {
         return CurrentTurnPlayer == PlayerType.Player ? opponentController : playerController;
     }
-
 }

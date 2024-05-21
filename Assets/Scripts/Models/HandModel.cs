@@ -3,17 +3,22 @@ using UnityEngine;
 
 public class HandModel
 {
-    private readonly List<CardController> cardControllers;
+    private readonly List<CardController> cards;
+
+    public HandModel()
+    {
+        cards = new List<CardController>();
+    }
 
     /// <summary>
     /// Adds a card to the hand if the hand contains less than 4 cards.
     /// </summary>
     /// <param name="card">The card to add to the hand.</param>
-    public void AddCard(CardController cardController)
+    public void AddCard(CardController card)
     {
-        if (cardControllers.Count < 4)
+        if (cards.Count < 4)
         {
-            cardControllers.Add(cardController);
+            cards.Add(card);
         }
         else
         {
@@ -27,21 +32,21 @@ public class HandModel
     /// <returns>The drawn CardModel if available, otherwise null.</returns>    
     public CardController DrawCard()
     {
-        if (cardControllers.Count == 0)
+        if (cards.Count == 0)
         {
             Debug.LogError("No cards available in the hand to draw.");
             return null;
         }
-        int randomIndex = Random.Range(0, cardControllers.Count);
-        CardController drawnCard = cardControllers[randomIndex];
-        cardControllers.RemoveAt(randomIndex);
+        int randomIndex = Random.Range(0, cards.Count);
+        CardController drawnCard = cards[randomIndex];
+        cards.RemoveAt(randomIndex);
         return drawnCard;
     }
-    public void RemoveCard(CardController cardController)
+    public void RemoveCard(CardController card)
     {
-        if (cardControllers.Count > 1)
+        if (cards.Count > 1)
         {
-            cardControllers.Remove(cardController);
+            cards.Remove(card);
         }
         else
         {
@@ -49,8 +54,8 @@ public class HandModel
         }
     }
 
-    internal List<CardController> GetCards()
+    public List<CardController> GetCards()
     {
-        return cardControllers;
+        return cards;
     }
 }

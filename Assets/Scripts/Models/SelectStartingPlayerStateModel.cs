@@ -6,7 +6,7 @@ public class SelectStartingPlayerStateModel : GameStateModel
     public override void OnEnter(GameController gameController)
     {
         gameController.SelectStartingPlayer();
-        gameController.GameStateController.SetState(gameController.TurnState, gameController);
+        gameController.gameStateController.SetState(gameController.turnState, gameController);
     }
 
     public override void OnExit(GameController gameController) { }

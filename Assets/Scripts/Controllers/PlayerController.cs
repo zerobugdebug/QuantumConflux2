@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-    //public PlayerHandView playerHandView;
-    public PlayerModel player;
+    public PlayerModel playerModel;
 
-       void Awake()
+    void Awake()
     {
         if (characterHandView == null)
         {
@@ -13,8 +12,7 @@ public class PlayerController : CharacterController
             return;
         }
 
-        character = player = new PlayerModel();
-        //InitializeCharacter();
+        characterModel = playerModel = new PlayerModel();
     }
 
     public override CardController SelectCard()
@@ -27,7 +25,6 @@ public class PlayerController : CharacterController
     public override int AssignPillz()
     {
         int assignedPillz = 3; // Placeholder for actual Pillz assignment logic
-        //player.SelectedCard.Pillz = assignedPillz;
         return assignedPillz;
     }
 }
