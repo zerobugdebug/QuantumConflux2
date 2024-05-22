@@ -23,7 +23,7 @@ public class GameStateController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (game == null)
         {
@@ -31,9 +31,6 @@ public class GameStateController : MonoBehaviour
             return;
         }
 
-        if (currentState != null)
-        {
-            currentState.OnUpdate(game);
-        }
+        currentState.OnUpdate(game);
     }
 }

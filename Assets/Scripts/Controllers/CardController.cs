@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardController : MonoBehaviour
@@ -21,6 +20,7 @@ public class CardController : MonoBehaviour
         if (cardObject.TryGetComponent(out cardView))
         {
             cardView.UpdateView(cardModel);
+            cardView.SetCardController(this);
         }
         else
         {
@@ -42,4 +42,10 @@ public class CardController : MonoBehaviour
         }
     }
 
+    // Method called when the card is clicked
+    public void OnCardClicked()
+    {
+        Debug.Log("Card clicked: " + cardModel.Name);
+
+    }
 }

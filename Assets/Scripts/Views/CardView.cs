@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
-public class CardView : MonoBehaviour
+
+public class CardView : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI powerText;
@@ -13,9 +15,9 @@ public class CardView : MonoBehaviour
     [SerializeField] private Image portraitImage;
 
     private CardModel cardModel;
+    private CardController cardController;
 
-    // Method to update the view with card details
-    public void UpdateView(CardModel cardModel)
+        public void UpdateView(CardModel cardModel)
     {
         if (cardModel == null)
         {
@@ -31,6 +33,28 @@ public class CardView : MonoBehaviour
         levelText.text = $"{this.cardModel.Level}/{this.cardModel.MaxLevel}";
         clanText.text = this.cardModel.Clan;
         bonusText.text = this.cardModel.Bonus;
-// portraitImage.sprite = this.cardModel.Portrait;
+        //portraitImage.sprite = this.cardModel.Portrait;
+    }
+
+
+    public void SetCardController(CardController cardController)
+    {
+        this.cardController = cardController;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Card clicked in view");
+        cardController.OnCardClicked();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log("Pointer down");
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Debug.Log("Pointer Up");
     }
 }

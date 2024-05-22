@@ -12,7 +12,7 @@ public class HandController
     /// <param name="numberOfCards">The number of cards to draw from the deck.</param>
     public void InitializeHand(DeckController deck, int numberOfCards)
     {
-        handModel=new HandModel();
+        handModel = new HandModel();
         for (int i = 0 ; i < numberOfCards ; i++)
         {
             CardController drawnCard = deck.DrawCard();

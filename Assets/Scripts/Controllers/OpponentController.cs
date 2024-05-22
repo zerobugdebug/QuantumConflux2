@@ -5,7 +5,7 @@ public class OpponentController : CharacterController
     //public OpponentHandView opponentHandView;
     public OpponentModel opponentModel;
 
-    void Awake()
+    private void Awake()
     {
         if (characterHandView == null)
         {
@@ -14,7 +14,7 @@ public class OpponentController : CharacterController
         }
 
         characterModel = opponentModel = new OpponentModel();
-       // Initialize();
+        // Initialize();
     }
 
     public override CardController SelectCard()

@@ -83,8 +83,8 @@
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_TextProcessingCommon.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_FontAssetUtilities.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_DefaultControls.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_UpdateManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_Compatibility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_UpdateManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_SpriteGlyph.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\MaterialReferenceManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui\Runtime\TMP\TMP_TextUtilities.cs" />
@@ -419,12 +419,12 @@
       <HintPath>Library\PackageCache\com.unity.collections\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

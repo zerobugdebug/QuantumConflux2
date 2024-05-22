@@ -4,7 +4,7 @@ public class PlayerController : CharacterController
 {
     public PlayerModel playerModel;
 
-    void Awake()
+    private void Awake()
     {
         if (characterHandView == null)
         {

@@ -711,7 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8051452162623179319}
   - component: {fileID: 4784786559180032275}
-  - component: {fileID: 6540033769755939405}
+  - component: {fileID: 1278376396074846308}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -758,29 +758,14 @@ MonoBehaviour:
   clanText: {fileID: 5582846340625568309}
   bonusText: {fileID: 3189333766430441759}
   portraitImage: {fileID: 2020700097479827961}
---- !u!223 &6540033769755939405
-Canvas:
+--- !u!222 &1278376396074846308
+CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6640607006318355306}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &8229071136602528286
 GameObject:
   m_ObjectHideFlags: 0
