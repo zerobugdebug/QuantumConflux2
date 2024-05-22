@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 
 public class CardDBController : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class CardDBController : MonoBehaviour
         CardList cardList = JsonUtility.FromJson<CardList>(jsonData);
         if (cardList != null && cardList.cardModels != null)
         {
-            foreach (var cardModel in cardList.cardModels)
+            foreach (CardModel cardModel in cardList.cardModels)
             {
                 CardController card = gameObject.AddComponent<CardController>();
                 card.Initialize(cardModel, cardPrefab);

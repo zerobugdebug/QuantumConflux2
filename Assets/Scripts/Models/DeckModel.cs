@@ -10,7 +10,6 @@ public class DeckModel
         cards = new List<CardController>();
     }
 
-
     // Method to add a card to the deck if it contains less than 8 cards
     public void AddCard(CardController card)
     {
@@ -23,7 +22,6 @@ public class DeckModel
             Debug.LogError("Deck cannot contain more than 8 cards.");
         }
     }
-
 
     // Method to draw a random card from the deck
     public CardController DrawCard()
@@ -44,12 +42,11 @@ public class DeckModel
     {
         if (cards.Count > 1)
         {
-            cards.Remove(card);
+            _ = cards.Remove(card);
         }
         else
         {
             Debug.LogError("Deck is empty.");
         }
     }
-
 }

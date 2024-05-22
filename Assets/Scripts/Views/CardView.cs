@@ -1,23 +1,22 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 using UnityEngine.UI;
 
-
-public class CardView : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler
+public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI powerText;
-    [SerializeField] private TextMeshProUGUI damageText;
-    [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI clanText;
-    [SerializeField] private TextMeshProUGUI bonusText;
-    [SerializeField] private Image portraitImage;
+    [SerializeField] private readonly TextMeshProUGUI nameText;
+    [SerializeField] private readonly TextMeshProUGUI powerText;
+    [SerializeField] private readonly TextMeshProUGUI damageText;
+    [SerializeField] private readonly TextMeshProUGUI levelText;
+    [SerializeField] private readonly TextMeshProUGUI clanText;
+    [SerializeField] private readonly TextMeshProUGUI bonusText;
+    [SerializeField] private readonly Image portraitImage;
 
     private CardModel cardModel;
     private CardController cardController;
 
-        public void UpdateView(CardModel cardModel)
+    public void UpdateView(CardModel cardModel)
     {
         if (cardModel == null)
         {
@@ -35,7 +34,6 @@ public class CardView : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,I
         bonusText.text = this.cardModel.Bonus;
         //portraitImage.sprite = this.cardModel.Portrait;
     }
-
 
     public void SetCardController(CardController cardController)
     {

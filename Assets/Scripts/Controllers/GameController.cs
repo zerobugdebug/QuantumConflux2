@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum PlayerType
 {
@@ -42,7 +41,7 @@ public class GameController : MonoBehaviour
     public OpponentController opponentController;
     public CardDBController cardDBController;
 
-    void Start()
+    private void Start()
     {
         if (gameStateController == null || playerController == null || opponentController == null || cardDBController == null)
         {

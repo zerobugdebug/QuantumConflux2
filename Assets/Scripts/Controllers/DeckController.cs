@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public class DeckController
 {
     private DeckModel deckModel;
     public DeckController()
     {
-        this.deckModel = new DeckModel();
+        deckModel = new DeckModel();
     }
 
     // Method to initialize the deck model
@@ -14,7 +11,6 @@ public class DeckController
     {
         this.deckModel = deckModel;
     }
-
 
     public void AddCard(CardController card)
     {
@@ -30,5 +26,4 @@ public class DeckController
     {
         return deckModel.DrawCard();
     }
-
 }

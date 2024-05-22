@@ -1,4 +1,3 @@
-using UnityEngine;
 using System.Collections.Generic;
 
 public class CardDBModel
@@ -14,15 +13,16 @@ public class CardDBModel
     public void AddCard(CardController card)
     {
         cards.Add(card);
-/*        if (!cards.Exists(c => c.Id == card.Id))
-        {
-            cards.Add(card);
-        }
-        else
-        {
-            Debug.LogError("Card with the same ID already exists in the database.");
-        }
-*/    }
+        /*        if (!cards.Exists(c => c.Id == card.Id))
+                {
+                    cards.Add(card);
+                }
+                else
+                {
+                    Debug.LogError("Card with the same ID already exists in the database.");
+                }
+        */
+    }
 
     // Method to find and return a card by its ID
     public CardController GetCardById(int id)

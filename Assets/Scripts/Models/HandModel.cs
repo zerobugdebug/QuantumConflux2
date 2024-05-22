@@ -46,7 +46,7 @@ public class HandModel
     {
         if (cards.Count > 1)
         {
-            cards.Remove(card);
+            _ = cards.Remove(card);
         }
         else
         {

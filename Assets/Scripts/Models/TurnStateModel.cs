@@ -50,7 +50,7 @@ public class TurnStateModel : GameStateModel
 
     private void AttackerChooseCard(GameController gameController)
     {
-       //CharacterController attacker = gameController.GetCurrentAttacker();
+        //CharacterController attacker = gameController.GetCurrentAttacker();
         //CardController selectedCard = attacker.SelectCard();
         //attacker.character.SelectedCard = selectedCard;
         //Debug.Log("Attacker has chosen card: " + selectedCard.name);

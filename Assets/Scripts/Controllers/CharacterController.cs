@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class CharacterController : MonoBehaviour
 {
@@ -16,8 +16,8 @@ public abstract class CharacterController : MonoBehaviour
     {
         this.characterModel = characterModel;
         hand = new HandController();
-        decks= new List<DeckController>();
-        selectedDeck= new DeckController();
+        decks = new List<DeckController>();
+        selectedDeck = new DeckController();
     }
 
     // Method to add a deck to character
@@ -38,7 +38,7 @@ public abstract class CharacterController : MonoBehaviour
     {
         if (decks.Count > 1)
         {
-            decks.Remove(deck);
+            _ = decks.Remove(deck);
         }
         else
         {
