@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerType
 {
@@ -41,7 +42,6 @@ public class GameController : MonoBehaviour
     public OpponentController opponentController;
     public CardDBController cardDBController;
 
-
     void Start()
     {
         if (gameStateController == null || playerController == null || opponentController == null || cardDBController == null)
@@ -49,12 +49,13 @@ public class GameController : MonoBehaviour
             Debug.LogError("One or more required components are not assigned in the inspector.");
             return;
         }
-        cardDBController.Initialize(new CardDBModel());
         gameStateController.SetState(setupGameState, this);
     }
 
     public void InitializeGame()
     {
+        cardDBController.Initialize(new CardDBModel());
+
         // Initialize game logic, set initial life points, etc.
         PlayerLifePoints = 12;
         OpponentLifePoints = 12;
@@ -65,7 +66,7 @@ public class GameController : MonoBehaviour
         opponentController.Initialize(new CharacterModel());
 
         // Initialize player and opponent decks
-        DeckController deck = new DeckController();
+        DeckController deck = new();
         deck.AddCard(cardDBController.GetCardById(0));
         deck.AddCard(cardDBController.GetCardById(1));
         deck.AddCard(cardDBController.GetCardById(2));
@@ -84,9 +85,12 @@ public class GameController : MonoBehaviour
         playerController.GenerateHand();
         opponentController.GenerateHand();
 
+        //TODO: call instantiate for all cards on hand.
+
         // Update hands views
         playerController.UpdateView();
         opponentController.UpdateView();
+
     }
 
     public void SelectStartingPlayer()

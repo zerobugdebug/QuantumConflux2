@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterHandView : MonoBehaviour
@@ -29,5 +30,26 @@ public class CharacterHandView : MonoBehaviour
     public CardController SelectCard()
     {
         return null;
+    }
+
+    internal void InstantiateHand(List<CardController> cards)
+    {
+        if (cards == null || cards.Count == 0)
+        {
+            Debug.LogError("CardControllers list is null or empty");
+            return;
+        }
+
+        // Instantiate cards
+        foreach (CardController card in cards)
+        {
+            if (card == null)
+            {
+                Debug.LogError("CardController is null");
+                continue;
+            }
+
+            card.InstantiateCard(transform);
+        }
     }
 }

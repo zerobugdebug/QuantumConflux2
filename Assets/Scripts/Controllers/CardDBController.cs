@@ -7,6 +7,8 @@ public class CardDBController : MonoBehaviour
     private CardDBModel cardDBModel;
     [SerializeField]
     private TextAsset cardDataJson; // Drag-and-drop JSON file in the Inspector
+    [SerializeField]
+    private GameObject cardPrefab;
 
     // Method to initialize the card database model
     public void Initialize(CardDBModel cardDBModel)
@@ -33,7 +35,7 @@ public class CardDBController : MonoBehaviour
             foreach (var cardModel in cardList.cardModels)
             {
                 CardController card = gameObject.AddComponent<CardController>();
-                card.Initialize(cardModel);
+                card.Initialize(cardModel, cardPrefab);
                 cardDBModel.AddCard(card);
             }
         }

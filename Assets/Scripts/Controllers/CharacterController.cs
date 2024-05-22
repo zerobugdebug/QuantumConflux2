@@ -67,6 +67,7 @@ public abstract class CharacterController : MonoBehaviour
             return;
         }
         hand.InitializeHand(selectedDeck, 4);
+        characterHandView.InstantiateHand(hand.GetCards());
     }
 
     // Method to shuffle the deck

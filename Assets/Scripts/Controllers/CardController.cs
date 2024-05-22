@@ -5,13 +5,12 @@ public class CardController : MonoBehaviour
 {
     private CardModel cardModel;
     private CardView cardView;
-
-    [SerializeField]
     private GameObject cardPrefab;
 
-    public void Initialize(CardModel cardModel)
+    public void Initialize(CardModel cardModel, GameObject cardPrefab)
     {
         this.cardModel = cardModel;
+        this.cardPrefab = cardPrefab;
     }
 
     // Method to instantiate a card and assign its view
