@@ -20,7 +20,7 @@ public class OpponentController : CharacterController
     public override CardController SelectCard()
     {
         // Placeholder for AI logic for selecting a card
-        CardController selectedCard = characterHandView.SelectCard();
+        CardController selectedCard = SelectRandomUnplayedCard();
         this.selectedCard = selectedCard;
         return selectedCard;
     }

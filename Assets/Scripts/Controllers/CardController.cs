@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CardController : MonoBehaviour
@@ -5,6 +6,11 @@ public class CardController : MonoBehaviour
     private CardModel cardModel;
     private CardView cardView;
     private GameObject cardPrefab;
+    private readonly bool isPlayable = true;
+
+    public event Action<CardController> CardClicked;
+
+    public bool IsPlayed { get; set; } = false;
 
     public void Initialize(CardModel cardModel, GameObject cardPrefab)
     {
@@ -46,6 +52,13 @@ public class CardController : MonoBehaviour
     public void OnCardClicked()
     {
         Debug.Log("Card clicked: " + cardModel.Name);
-
+        if (isPlayable)
+        {
+            CardClicked?.Invoke(this); // Raise event
+        }
+        else
+        {
+            Debug.Log("Cannot interact with this card.");
+        }
     }
 }

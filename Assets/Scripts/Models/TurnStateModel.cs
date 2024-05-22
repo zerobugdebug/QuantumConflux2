@@ -18,7 +18,6 @@ public class TurnStateModel : GameStateModel
             {
                 case TurnPhase.AttackerChooseCard:
                     AttackerChooseCard(gameController);
-                    //gameController.CurrentPhase = TurnPhase.AttackerAssignPillz;
                     break;
                 case TurnPhase.AttackerAssignPillz:
                     AttackerAssignPillz(gameController);
@@ -50,8 +49,11 @@ public class TurnStateModel : GameStateModel
 
     private void AttackerChooseCard(GameController gameController)
     {
-        //CharacterController attacker = gameController.GetCurrentAttacker();
-        //CardController selectedCard = attacker.SelectCard();
+        CharacterController attacker = gameController.GetCurrentAttacker();
+        if (attacker.IsCardSelected())
+        {
+            gameController.CurrentPhase = TurnPhase.AttackerAssignPillz;
+        }
         //attacker.character.SelectedCard = selectedCard;
         //Debug.Log("Attacker has chosen card: " + selectedCard.name);
     }

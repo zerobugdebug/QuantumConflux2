@@ -96,6 +96,10 @@ public class GameController : MonoBehaviour
     {
         // Randomly select the starting player
         CurrentTurnPlayer = (Random.value > 0.5f) ? PlayerType.Player : PlayerType.Opponent;
+
+        //Fix player as first starting for testing
+        CurrentTurnPlayer = PlayerType.Player;
+
         Debug.Log("Starting player selected: " + CurrentTurnPlayer);
     }
 

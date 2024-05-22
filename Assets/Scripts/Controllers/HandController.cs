@@ -27,6 +27,13 @@ public class HandController
     {
         handModel.AddCard(card);
     }
+    public void SubscribeToCardClicked(CharacterController character)
+    {
+        foreach (CardController card in GetCards())
+        {
+            card.CardClicked += character.OnCardClicked;
+        }
+    }
 
     public void RemoveCard(CardController card)
     {
@@ -36,6 +43,11 @@ public class HandController
     public CardController DrawCard()
     {
         return handModel.DrawCard();
+    }
+
+    public CardController SelectRandomUnplayedCard()
+    {
+        return handModel.SelectRandomUnplayedCard();
     }
 
     internal void UpdateView()

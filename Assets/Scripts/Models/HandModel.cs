@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HandModel
@@ -57,5 +58,19 @@ public class HandModel
     public List<CardController> GetCards()
     {
         return cards;
+    }
+
+    internal CardController SelectRandomUnplayedCard()
+    {
+        CardController[] unplayedCards = cards.Where(card => !card.IsPlayed).ToArray();
+
+        if (unplayedCards.Length == 0)
+        {
+            Debug.LogWarning("No unplayed cards available.");
+            return null;
+        }
+
+        int randomIndex = Random.Range(0, unplayedCards.Length);
+        return unplayedCards[randomIndex];
     }
 }

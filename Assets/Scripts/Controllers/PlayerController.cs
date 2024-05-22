@@ -15,16 +15,14 @@ public class PlayerController : CharacterController
         characterModel = playerModel = new PlayerModel();
     }
 
-    public override CardController SelectCard()
-    {
-        CardController selectedCard = characterHandView.SelectCard();
-        this.selectedCard = selectedCard;
-        return selectedCard;
-    }
-
     public override int AssignPillz()
     {
         int assignedPillz = 3; // Placeholder for actual Pillz assignment logic
         return assignedPillz;
+    }
+
+    public override CardController SelectCard()
+    {
+        throw new System.NotImplementedException();
     }
 }

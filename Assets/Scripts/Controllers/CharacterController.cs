@@ -68,6 +68,7 @@ public abstract class CharacterController : MonoBehaviour
         }
         hand.InitializeHand(selectedDeck, 4);
         characterHandView.InstantiateHand(hand.GetCards());
+        hand.SubscribeToCardClicked(this);
     }
 
     // Method to shuffle the deck
@@ -94,5 +95,21 @@ public abstract class CharacterController : MonoBehaviour
 
     public abstract CardController SelectCard();
 
+    public bool IsCardSelected()
+    {
+        return selectedCard != null;
+    }
+
     public abstract int AssignPillz();
+
+    public CardController SelectRandomUnplayedCard()
+    {
+        return hand.SelectRandomUnplayedCard();
+    }
+
+    public void OnCardClicked(CardController card)
+    {
+        Debug.Log("PlayerController received Card clicked for card: " + card.name);
+    }
 }
+

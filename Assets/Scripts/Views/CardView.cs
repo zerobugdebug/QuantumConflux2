@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private readonly TextMeshProUGUI nameText;
-    [SerializeField] private readonly TextMeshProUGUI powerText;
-    [SerializeField] private readonly TextMeshProUGUI damageText;
-    [SerializeField] private readonly TextMeshProUGUI levelText;
-    [SerializeField] private readonly TextMeshProUGUI clanText;
-    [SerializeField] private readonly TextMeshProUGUI bonusText;
-    [SerializeField] private readonly Image portraitImage;
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI powerText;
+    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI clanText;
+    [SerializeField] private TextMeshProUGUI bonusText;
+    [SerializeField] private Image portraitImage;
 
     private CardModel cardModel;
     private CardController cardController;
