@@ -28,9 +28,9 @@ public class CardView : MonoBehaviour
         nameText.text = this.cardModel.Name;
         powerText.text = this.cardModel.Power.ToString();
         damageText.text = this.cardModel.Damage.ToString();
-        levelText.text = $"Level: {this.cardModel.Level}/{this.cardModel.MaxLevel}";
+        levelText.text = $"{this.cardModel.Level}/{this.cardModel.MaxLevel}";
         clanText.text = this.cardModel.Clan;
         bonusText.text = this.cardModel.Bonus;
-        portraitImage.sprite = this.cardModel.Portrait;
+// portraitImage.sprite = this.cardModel.Portrait;
     }
 }

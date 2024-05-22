@@ -162,17 +162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d58485967abb344a2a310f9fbb8502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStateController: {fileID: 1899071711}
-  SetupGameState: {fileID: 11400000, guid: d275d8b715a2c2b4899c760c75a7d3ba, type: 2}
-  SelectStartingPlayerState: {fileID: 11400000, guid: 0ff3d45e37f6fc441a786a3ba6c4deae, type: 2}
-  TurnState: {fileID: 11400000, guid: c0f0f667dfc45a94f9053e14c3325318, type: 2}
-  ResolveRoundState: {fileID: 11400000, guid: 6251423b56eff27489332f67d7814ffe, type: 2}
-  SwitchRolesState: {fileID: 11400000, guid: 21269867ce9490840949f3067489e799, type: 2}
-  CheckGameEndState: {fileID: 11400000, guid: b422bd6132942054399abb06771df27e, type: 2}
-  EndGameState: {fileID: 11400000, guid: 8dd0122315bb9ed4b8c14a9892608706, type: 2}
+  gameStateController: {fileID: 1899071711}
+  setupGameState: {fileID: 11400000, guid: d275d8b715a2c2b4899c760c75a7d3ba, type: 2}
+  selectStartingPlayerState: {fileID: 11400000, guid: 0ff3d45e37f6fc441a786a3ba6c4deae, type: 2}
+  turnState: {fileID: 11400000, guid: c0f0f667dfc45a94f9053e14c3325318, type: 2}
+  resolveRoundState: {fileID: 11400000, guid: 6251423b56eff27489332f67d7814ffe, type: 2}
+  switchRolesState: {fileID: 11400000, guid: 21269867ce9490840949f3067489e799, type: 2}
+  checkGameEndState: {fileID: 11400000, guid: b422bd6132942054399abb06771df27e, type: 2}
+  endGameState: {fileID: 11400000, guid: 8dd0122315bb9ed4b8c14a9892608706, type: 2}
   playerController: {fileID: 176422668}
   opponentController: {fileID: 958374850}
-  cardDBController: {fileID: 0}
+  cardDBController: {fileID: 1704733491}
 --- !u!1 &43774793
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,9 +315,9 @@ RectTransform:
   - {fileID: 2019656923}
   m_Father: {fileID: 43774797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -25}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87093371
@@ -442,7 +442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb18094e2d54f44f946b76409670fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 8885283474318401792, guid: 1e14cf8db0a7e2041906d05a3d7a8019, type: 3}
 --- !u!1 &176422666
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,11 +956,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 600
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1156,6 +1155,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662034015}
   m_CullTransparentMesh: 1
+--- !u!1 &1704733489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704733490}
+  - component: {fileID: 1704733491}
+  m_Layer: 0
+  m_Name: CardDBController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1704733490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704733489}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1044.1324, y: 468.51038, z: -6.9524317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2052157390}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1704733491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704733489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2bfd478d5a5df44962051220ea1f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardDataJson: {fileID: 4900000, guid: 90e2ec22704edcf4c89d8e9f69a0a436, type: 3}
+  cardPrefab: {fileID: 8885283474318401792, guid: 1e14cf8db0a7e2041906d05a3d7a8019, type: 3}
 --- !u!1 &1707190796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,9 +1374,9 @@ RectTransform:
   - {fileID: 388210998}
   m_Father: {fileID: 43774797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 300, y: 25}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789442899
@@ -1502,11 +1547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 600
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 7
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1556,7 +1601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2261a3c7c7cc40849841a88a4c1449d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 39215423}
+  game: {fileID: 39215423}
 --- !u!4 &1899071712
 Transform:
   m_ObjectHideFlags: 0
@@ -1742,6 +1787,7 @@ Transform:
   - {fileID: 176422667}
   - {fileID: 1899071712}
   - {fileID: 39215422}
+  - {fileID: 1704733490}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807

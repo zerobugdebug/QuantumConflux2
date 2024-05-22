@@ -10,6 +10,7 @@ public class GameStateController : MonoBehaviour
     {
         if (currentState != null)
         {
+            Debug.Log("Exiting state: " + currentState);
             currentState.OnExit(game);
         }
 
@@ -17,6 +18,7 @@ public class GameStateController : MonoBehaviour
 
         if (currentState != null)
         {
+            Debug.Log("Entering state: " + currentState);
             currentState.OnEnter(game);
         }
     }
