@@ -68,6 +68,11 @@ public abstract class CharacterController : MonoBehaviour
         }
         hand.InitializeHand(selectedDeck, 4);
         characterHandView.InstantiateHand(hand.GetCards());
+    }
+
+    public void SubscribeToCardClicked()
+    {
+
         hand.SubscribeToCardClicked(this);
     }
 
@@ -93,11 +98,21 @@ public abstract class CharacterController : MonoBehaviour
         return selectedCard;
     }
 
+    public int GetAssignedPillz()
+    {
+        return selectedCard == null ? 0 : selectedCard.GetAssignedPillz();
+    }
+
     public abstract CardController SelectCard();
 
     public bool IsCardSelected()
     {
         return selectedCard != null;
+    }
+
+    public bool IsCurrentCardPillzAssigned()
+    {
+        return selectedCard != null && selectedCard.IsPillzAssigned();
     }
 
     public abstract int AssignPillz();
@@ -110,6 +125,7 @@ public abstract class CharacterController : MonoBehaviour
     public void OnCardClicked(CardController card)
     {
         Debug.Log("PlayerController received Card clicked for card: " + card.name);
+        selectedCard = card;
     }
 }
 

@@ -82,6 +82,7 @@ public class GameController : MonoBehaviour
 
         // Initialize player and opponent hands
         playerController.GenerateHand();
+        playerController.SubscribeToCardClicked();
         opponentController.GenerateHand();
 
         //TODO: call instantiate for all cards on hand.
