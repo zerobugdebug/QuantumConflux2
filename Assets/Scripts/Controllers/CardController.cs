@@ -61,4 +61,14 @@ public class CardController : MonoBehaviour
             Debug.Log("Cannot interact with this card.");
         }
     }
+
+    public bool IsPillzAssigned()
+    {
+        return cardModel.IsPillzAssigned();
+    }
+
+    public int GetAssignedPillz()
+    {
+        return cardModel.Pillz;
+    }
 }

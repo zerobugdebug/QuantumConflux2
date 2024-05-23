@@ -61,10 +61,11 @@ public class TurnStateModel : GameStateModel
     private void AttackerAssignPillz(GameController gameController)
     {
         CharacterController attacker = gameController.GetCurrentAttacker();
-        int assignedPillz = attacker.AssignPillz();
-        //attacker.character.SelectedCard.Pillz = assignedPillz;
-        //attacker.character.Pillz -= assignedPillz;
-        Debug.Log("Attacker has assigned " + assignedPillz + " Pillz to card: " + assignedPillz);
+        if (attacker.IsCurrentCardPillzAssigned())
+        {
+            gameController.CurrentPhase = TurnPhase.AttackerPlayCard;
+        }
+        Debug.Log("Attacker has assigned " + attacker.GetAssignedPillz() + " Pillz to card: " + attacker.GetCurrentCard());
     }
 
     private void AttackerPlayCard(GameController gameController)
