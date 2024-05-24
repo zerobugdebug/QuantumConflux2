@@ -71,4 +71,14 @@ public class CardController : MonoBehaviour
     {
         return cardModel.Pillz;
     }
+
+    public CardView GetCardView()
+    {
+        return cardView;
+    }
+
+    public void SetPillz(int value)
+    {
+        cardModel.SetPillz(value);
+    }
 }

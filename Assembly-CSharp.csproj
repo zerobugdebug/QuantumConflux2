@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
+    <Compile Include="Assets\Scripts\Views\ChargeAssignmentView.cs" />
     <Compile Include="Assets\Scripts\Models\SwitchRolesStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\HandController.cs" />
     <Compile Include="Assets\Scripts\Models\CheckGameEndStateModel.cs" />

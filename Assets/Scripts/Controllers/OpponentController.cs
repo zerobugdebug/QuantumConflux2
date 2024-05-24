@@ -25,10 +25,14 @@ public class OpponentController : CharacterController
         return selectedCard;
     }
 
-    public override int AssignPillz()
+    public override void AssignPillz()
     {
-        int assignedPillz = 3; // Placeholder for AI logic for assigning Pillz
         //opponent.SelectedCard.Pillz = assignedPillz;
-        return assignedPillz;
+        //return assignedPillz;
+    }
+
+    public override void ConfirmPillzSelection(int value)
+    {
+        //selectedCard.SetPillz(value);
     }
 }

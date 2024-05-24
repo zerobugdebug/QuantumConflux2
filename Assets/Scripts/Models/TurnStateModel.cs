@@ -21,7 +21,7 @@ public class TurnStateModel : GameStateModel
                     break;
                 case TurnPhase.AttackerAssignPillz:
                     AttackerAssignPillz(gameController);
-                    gameController.CurrentPhase = TurnPhase.AttackerPlayCard;
+                    // gameController.CurrentPhase = TurnPhase.AttackerPlayCard;
                     break;
                 case TurnPhase.AttackerPlayCard:
                     AttackerPlayCard(gameController);
@@ -63,9 +63,11 @@ public class TurnStateModel : GameStateModel
         CharacterController attacker = gameController.GetCurrentAttacker();
         if (attacker.IsCurrentCardPillzAssigned())
         {
+            Debug.Log("Attacker has assigned " + attacker.GetAssignedPillz() + " Pillz to card: " + attacker.GetCurrentCard());
             gameController.CurrentPhase = TurnPhase.AttackerPlayCard;
         }
-        Debug.Log("Attacker has assigned " + attacker.GetAssignedPillz() + " Pillz to card: " + attacker.GetCurrentCard());
+        else
+        { attacker.AssignPillz(); }
     }
 
     private void AttackerPlayCard(GameController gameController)
@@ -87,10 +89,17 @@ public class TurnStateModel : GameStateModel
     private void DefenderAssignPillz(GameController gameController)
     {
         CharacterController defender = gameController.GetCurrentDefender();
-        int assignedPillz = defender.AssignPillz();
+        if (defender.IsCurrentCardPillzAssigned())
+        {
+            Debug.Log("Attacker has assigned " + defender.GetAssignedPillz() + " Pillz to card: " + defender.GetCurrentCard());
+            gameController.CurrentPhase = TurnPhase.DefenderPlayCard;
+        }
+        else
+        { defender.AssignPillz(); }
+        //int assignedPillz = defender.AssignPillz();
         //defender.character.SelectedCard.Pillz = assignedPillz;
         //defender.character.Pillz -= assignedPillz;
-        Debug.Log("Defender has assigned " + assignedPillz + " Pillz to card: " + assignedPillz);
+        //Debug.Log("Defender has assigned " + assignedPillz + " Pillz to card: " + assignedPillz);
     }
 
     private void DefenderPlayCard(GameController gameController)

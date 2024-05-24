@@ -115,7 +115,9 @@ public abstract class CharacterController : MonoBehaviour
         return selectedCard != null && selectedCard.IsPillzAssigned();
     }
 
-    public abstract int AssignPillz();
+    public abstract void AssignPillz();
+
+    public abstract void ConfirmPillzSelection(int value);
 
     public CardController SelectRandomUnplayedCard()
     {
