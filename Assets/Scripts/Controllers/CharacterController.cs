@@ -9,7 +9,7 @@ public abstract class CharacterController : MonoBehaviour
     private List<DeckController> decks;
     protected CardController selectedCard;
     [SerializeField] protected CharacterHandView characterHandView;
-    // TODO: [SerializeField] private CharacterStatsView characterStatsView;
+    [SerializeField] private CharacterStatsView characterStatsView;
 
     // Method to initialize the character's hand
     public virtual void Initialize(CharacterModel characterModel, string name)
@@ -19,6 +19,7 @@ public abstract class CharacterController : MonoBehaviour
         decks = new List<DeckController>();
         selectedDeck = new DeckController();
         SetName(name);
+        characterStatsView.Initialize(name);
     }
 
     // Method to add a deck to character
@@ -92,6 +93,12 @@ public abstract class CharacterController : MonoBehaviour
     public void UpdateView()
     {
         characterHandView.UpdateView(hand.GetCards());
+        characterStatsView.UpdateView(GetLifePoints(), GetPillz());
+    }
+
+    private int GetLifePoints()
+    {
+        return characterModel.GetLifePoints();
     }
 
     public CardController GetCurrentCard()

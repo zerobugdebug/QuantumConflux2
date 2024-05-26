@@ -63,4 +63,9 @@ public class CharacterModel
     {
         return pillz;
     }
+
+    internal int GetLifePoints()
+    {
+        return lifePoints;
+    }
 }

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Views\PlayerStatsView.cs" />
     <Compile Include="Assets\Scripts\Models\DeckModel.cs" />
     <Compile Include="Assets\Scripts\Models\TurnStateModel.cs" />
+    <Compile Include="Assets\Scripts\Views\CharacterStatsView.cs" />
     <Compile Include="Assets\Scripts\Models\CharacterModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentStatsView.cs" />
     <Compile Include="Assets\Scripts\Controllers\DeckController.cs" />
