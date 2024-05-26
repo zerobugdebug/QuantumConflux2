@@ -1,3 +1,6 @@
+using DG.Tweening;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public enum PlayerType
@@ -19,6 +22,8 @@ public enum TurnPhase
 public class GameController : MonoBehaviour
 {
     public GameStateController gameStateController;
+
+    [SerializeField] private TextMeshProUGUI fullScreenText; // Reference to the UI Text element
 
     // References to GameState ScriptableObjects
     public SetupGameStateModel setupGameState;
@@ -61,8 +66,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Game Initialized");
 
         // Initialize player and opponent
-        playerController.Initialize(new CharacterModel());
-        opponentController.Initialize(new CharacterModel());
+        playerController.Initialize(new CharacterModel(), "Player");
+        opponentController.Initialize(new CharacterModel(), "Opponent");
 
         // Initialize player and opponent decks
         DeckController deck = new();
@@ -96,7 +101,7 @@ public class GameController : MonoBehaviour
     public void SelectStartingPlayer()
     {
         // Randomly select the starting player
-        CurrentTurnPlayer = (Random.value > 0.5f) ? PlayerType.Player : PlayerType.Opponent;
+        CurrentTurnPlayer = (UnityEngine.Random.value > 0.5f) ? PlayerType.Player : PlayerType.Opponent;
 
         //Fix player as first starting for testing
         CurrentTurnPlayer = PlayerType.Player;
@@ -108,7 +113,7 @@ public class GameController : MonoBehaviour
     {
         // Logic for starting a turn
         TurnFinished = false;
-        CurrentPhase = TurnPhase.AttackerChooseCard;
+        DisplayPhaseText(GetCurrentAttacker().GetName() + " PHASE", TurnPhase.AttackerChooseCard);
         Debug.Log(CurrentTurnPlayer + "'s turn started.");
     }
 
@@ -187,14 +192,14 @@ public class GameController : MonoBehaviour
     {
         // Example calculation of player attack value
         // This would typically involve the card played and the number of pillz assigned
-        return Random.Range(1, 10); // Placeholder for actual calculation
+        return UnityEngine.Random.Range(1, 10); // Placeholder for actual calculation
     }
 
     private int CalculateOpponentAttack()
     {
         // Example calculation of opponent attack value
         // This would typically involve the card played and the number of pillz assigned
-        return Random.Range(1, 10); // Placeholder for actual calculation
+        return UnityEngine.Random.Range(1, 10); // Placeholder for actual calculation
     }
 
     public CharacterController GetCurrentAttacker()
@@ -205,5 +210,56 @@ public class GameController : MonoBehaviour
     public CharacterController GetCurrentDefender()
     {
         return CurrentTurnPlayer == PlayerType.Player ? opponentController : playerController;
+    }
+
+    /*    public void DisplayFullScreenText(string message)
+        {
+            fullScreenText.text = message;
+            fullScreenText.gameObject.SetActive(true);
+            _ = fullScreenText.DOFade(1, 1f).SetEase(Ease.InOutQuad); // Fade in over 1 second
+        }
+
+        public void HideFullScreenText()
+        {
+            _ = fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).OnComplete(() =>
+            {
+                fullScreenText.gameObject.SetActive(false);
+            }); // Fade out over 1 second
+
+        }
+
+        public void DisplayOpponentPhaseText()
+        {
+            _ = StartCoroutine(DisplayOpponentPhaseTextCoroutine());
+        }
+
+        public IEnumerator DisplayOpponentPhaseTextCoroutine()
+        {
+            // Display text logic here
+            DisplayFullScreenText("Opponent Phase");
+
+            yield return new WaitForSeconds(1);
+
+            // Hide text and move to next phase
+            HideFullScreenText();
+            yield return new WaitForSeconds(1);
+            CurrentPhase = TurnPhase.DefenderChooseCard;
+
+        }
+    */
+    // Public method to display a full-screen message
+    public async void DisplayPhaseText(string message, TurnPhase phase)
+    {
+
+        fullScreenText.text = message; // Set the message text
+        fullScreenText.gameObject.SetActive(true); // Make the text visible
+
+        await fullScreenText.DOFade(1, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade in over 1 second
+        await Task.Delay(1000); // Wait for 1 second
+        await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+
+        fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
+        await Task.Delay(1000); // Wait for another second
+        CurrentPhase = phase;
     }
 }
