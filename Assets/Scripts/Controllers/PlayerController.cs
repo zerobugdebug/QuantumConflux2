@@ -31,7 +31,7 @@ public class PlayerController : CharacterController
                 rt.anchorMax = Vector2.up;
                 rt.pivot = Vector2.zero;
 
-                chargeAssignmentView.Initialize(playerModel.Pillz, this);
+                chargeAssignmentView.Initialize(playerModel.GetPillz(), this);
                 chargeAssignmentView.gameObject.SetActive(true);
             }
         }

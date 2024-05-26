@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class CharacterModel
 {
-    public int LifePoints { get; private set; }
-    public int Pillz { get; private set; }
+    private int lifePoints;
+    private int pillz;
+    private string name;
 
     public CharacterModel()
     {
-        LifePoints = 12;  // Default life points
-        Pillz = 12;  // Default Pillz
+        lifePoints = 12;  // Default life points
+        pillz = 12;  // Default Pillz
+        name = "Player";
     }
 
     // Method to add life points
@@ -16,7 +18,7 @@ public class CharacterModel
     {
         if (amount > 0)
         {
-            LifePoints += amount;
+            lifePoints += amount;
         }
     }
 
@@ -25,7 +27,7 @@ public class CharacterModel
     {
         if (amount > 0)
         {
-            LifePoints = Mathf.Max(LifePoints - amount, 0);
+            lifePoints = Mathf.Max(lifePoints - amount, 0);
         }
     }
 
@@ -34,7 +36,7 @@ public class CharacterModel
     {
         if (amount > 0)
         {
-            Pillz += amount;
+            pillz += amount;
         }
     }
 
@@ -43,7 +45,22 @@ public class CharacterModel
     {
         if (amount > 0)
         {
-            Pillz = Mathf.Max(Pillz - amount, 0);
+            pillz = Mathf.Max(pillz - amount, 0);
         }
+    }
+
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public int GetPillz()
+    {
+        return pillz;
     }
 }

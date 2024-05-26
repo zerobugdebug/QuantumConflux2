@@ -14,6 +14,7 @@ public class OpponentController : CharacterController
         }
 
         characterModel = opponentModel = new OpponentModel();
+        SetName("Opponent");
         // Initialize();
     }
 
@@ -27,7 +28,7 @@ public class OpponentController : CharacterController
 
     public override void AssignPillz()
     {
-        //opponent.SelectedCard.Pillz = assignedPillz;
+        selectedCard.SetPillz(Random.Range(0, GetPillz()));
         //return assignedPillz;
     }
 

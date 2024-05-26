@@ -12,12 +12,13 @@ public abstract class CharacterController : MonoBehaviour
     // TODO: [SerializeField] private CharacterStatsView characterStatsView;
 
     // Method to initialize the character's hand
-    public virtual void Initialize(CharacterModel characterModel)
+    public virtual void Initialize(CharacterModel characterModel, string name)
     {
         this.characterModel = characterModel;
         hand = new HandController();
         decks = new List<DeckController>();
         selectedDeck = new DeckController();
+        SetName(name);
     }
 
     // Method to add a deck to character
@@ -126,8 +127,23 @@ public abstract class CharacterController : MonoBehaviour
 
     public void OnCardClicked(CardController card)
     {
-        Debug.Log("PlayerController received Card clicked for card: " + card.name);
+        Debug.Log("PlayerController received Card clicked for card: " + card.GetName());
         selectedCard = card;
+    }
+
+    public void SetName(string name)
+    {
+        characterModel.SetName(name);
+    }
+
+    public string GetName()
+    {
+        return characterModel.GetName();
+    }
+
+    public int GetPillz()
+    {
+        return characterModel.GetPillz();
     }
 }
 

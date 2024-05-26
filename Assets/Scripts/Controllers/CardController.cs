@@ -81,4 +81,9 @@ public class CardController : MonoBehaviour
     {
         cardModel.SetPillz(value);
     }
+
+    public string GetName()
+    {
+        return cardModel.Name;
+    }
 }

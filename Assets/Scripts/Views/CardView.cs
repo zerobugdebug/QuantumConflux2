@@ -12,6 +12,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     [SerializeField] private TextMeshProUGUI clanText;
     [SerializeField] private TextMeshProUGUI bonusText;
     [SerializeField] private Image portraitImage;
+    [SerializeField] private Image highlightOverlay;  // New overlay for highlighting
 
     private CardModel cardModel;
     private CardController cardController;
@@ -54,5 +55,18 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("Pointer Up");
+    }
+
+    public void HighlightCard(bool highlight)
+    {
+        if (highlightOverlay != null)
+        {
+            highlightOverlay.enabled = highlight;
+        }
+    }
+
+    public void MoveCardUp(bool moveUp)
+    {
+        transform.localPosition += moveUp ? new Vector3(0, 25, 0) : new Vector3(0, -25, 0);
     }
 }
