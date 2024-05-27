@@ -141,11 +141,13 @@ public class GameController : MonoBehaviour
         {
             int remainingLifePoints = defender.ApplyDamage(attacker);
             Debug.Log(attacker.GetName() + " wins the round. " + defender.GetName() + " has " + remainingLifePoints + " left");
+            DisplayStateText(attacker.GetName() + " wins the round. ", switchRolesState);
         }
         else
         {
             int remainingLifePoints = attacker.ApplyDamage(defender);
             Debug.Log(defender.GetName() + " wins the round. " + attacker.GetName() + " has " + remainingLifePoints + " left");
+            DisplayStateText(defender.GetName() + " wins the round. ", switchRolesState);
         }
 
         playerController.GetCurrentCard().GetCardView().MoveCardUp(false);
@@ -195,6 +197,26 @@ public class GameController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public string GetEndGameMessage()
+    {
+        // Check if the game is over (e.g., if any player's life points reach zero)
+        if (playerController.GetLifePoints() <= 0)
+        {
+            return "Opponent wins!";
+        }
+        else if (opponentController.GetLifePoints() <= 0)
+        {
+            return "Player wins!";
+        }
+        else if (playerController.SelectRandomUnplayedCard() == null)
+        {
+            return playerController.GetLifePoints() < opponentController.GetLifePoints()
+                ? "Opponent wins!"
+                : playerController.GetLifePoints() > opponentController.GetLifePoints() ? "Player wins!" : "Tie game.";
+        }
+        return "";
     }
 
     public void ShowGameResults()
@@ -269,10 +291,14 @@ public class GameController : MonoBehaviour
 
         await fullScreenText.DOFade(1, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade in over 1 second
         await Task.Delay(1000); // Wait for 1 second
-        await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+        //await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+
+        Color color = fullScreenText.color;
+        color.a = 0;
+        fullScreenText.color = color;
 
         fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
-        await Task.Delay(1000); // Wait for another second
+        //await Task.Delay(1000); // Wait for another second
         CurrentPhase = phase;
     }
     public async void DisplayStateText(string message, GameStateModel state)
@@ -283,10 +309,13 @@ public class GameController : MonoBehaviour
 
         await fullScreenText.DOFade(1, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade in over 1 second
         await Task.Delay(1000); // Wait for 1 second
-        await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+        //await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+        Color color = fullScreenText.color;
+        color.a = 0;
+        fullScreenText.color = color;
 
         fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
-        await Task.Delay(1000); // Wait for another second
+        //await Task.Delay(1000); // Wait for another second
         gameStateController.SetState(state, this);
     }
 }

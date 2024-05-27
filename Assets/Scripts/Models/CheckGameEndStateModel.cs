@@ -7,7 +7,7 @@ public class CheckGameEndStateModel : GameStateModel
     {
         if (gameController.IsGameOver())
         {
-            gameController.DisplayStateText("GAME OVER", gameController.endGameState);
+            gameController.DisplayStateText(gameController.GetEndGameMessage(), gameController.endGameState);
             //gameController.gameStateController.SetState(gameController.endGameState, gameController);
         }
         else
