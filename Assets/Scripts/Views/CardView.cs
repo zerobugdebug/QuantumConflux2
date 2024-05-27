@@ -43,18 +43,15 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Card clicked in view");
         cardController.OnCardClicked();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Pointer down");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Pointer Up");
     }
 
     public void HighlightCard(bool highlight)
@@ -67,6 +64,6 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 
     public void MoveCardUp(bool moveUp)
     {
-        transform.localPosition += moveUp ? new Vector3(0, 25, 0) : new Vector3(0, -25, 0);
+        transform.localPosition += moveUp ? new Vector3(0, 50, 0) : new Vector3(0, -50, 0);
     }
 }

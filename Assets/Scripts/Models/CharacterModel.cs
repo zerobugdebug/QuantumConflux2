@@ -14,21 +14,23 @@ public class CharacterModel
     }
 
     // Method to add life points
-    public void AddLifePoints(int amount)
+    public int AddLifePoints(int amount)
     {
         if (amount > 0)
         {
             lifePoints += amount;
         }
+        return lifePoints;
     }
 
     // Method to remove life points, ensuring they do not go below 0
-    public void RemoveLifePoints(int amount)
+    public int RemoveLifePoints(int amount)
     {
         if (amount > 0)
         {
             lifePoints = Mathf.Max(lifePoints - amount, 0);
         }
+        return lifePoints;
     }
 
     // Method to add pillz

@@ -6,7 +6,7 @@ public class CardController : MonoBehaviour
     private CardModel cardModel;
     private CardView cardView;
     private GameObject cardPrefab;
-    private readonly bool isPlayable = true;
+    //private readonly bool isPlayable = true;
 
     public event Action<CardController> CardClicked;
 
@@ -40,6 +40,10 @@ public class CardController : MonoBehaviour
     {
         if (cardView != null && cardModel != null)
         {
+            if (IsPlayed)
+            {
+                cardView.HighlightCard(true);
+            }
             cardView.UpdateView(cardModel);
         }
         else
@@ -51,8 +55,7 @@ public class CardController : MonoBehaviour
     // Method called when the card is clicked
     public void OnCardClicked()
     {
-        Debug.Log("Card clicked: " + cardModel.Name);
-        if (isPlayable)
+        if (!IsPlayed)
         {
             CardClicked?.Invoke(this); // Raise event
         }
@@ -85,5 +88,15 @@ public class CardController : MonoBehaviour
     public string GetName()
     {
         return cardModel.Name;
+    }
+
+    internal int CalculateAttack()
+    {
+        return (GetAssignedPillz() + 1) * cardModel.Power;
+    }
+
+    internal int GetDamage()
+    {
+        return cardModel.Damage;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class OpponentController : CharacterController
 {
     //public OpponentHandView opponentHandView;
-    public OpponentModel opponentModel;
+    //public OpponentModel opponentModel;
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class OpponentController : CharacterController
             return;
         }
 
-        characterModel = opponentModel = new OpponentModel();
+        characterModel = new OpponentModel();
         SetName("Opponent");
         // Initialize();
     }
@@ -28,12 +28,24 @@ public class OpponentController : CharacterController
 
     public override void AssignPillz()
     {
-        selectedCard.SetPillz(Random.Range(0, GetPillz()));
+        int pillz = Random.Range(0, GetPillz());
+        selectedCard.SetPillz(pillz);
+        characterModel.RemovePillz(pillz);
         //return assignedPillz;
     }
 
     public override void ConfirmPillzSelection(int value)
     {
         //selectedCard.SetPillz(value);
+    }
+
+    public override void ResetChargeAssignment()
+    {
+
+    }
+
+    public override void MarkCard()
+    {
+        selectedCard.GetCardView().MoveCardUp(false);
     }
 }

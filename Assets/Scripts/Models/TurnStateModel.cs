@@ -29,15 +29,13 @@ public class TurnStateModel : GameStateModel
                     break;
                 case TurnPhase.DefenderChooseCard:
                     DefenderChooseCard(gameController);
-                    gameController.CurrentPhase = TurnPhase.DefenderAssignPillz;
                     break;
                 case TurnPhase.DefenderAssignPillz:
                     DefenderAssignPillz(gameController);
-                    gameController.CurrentPhase = TurnPhase.DefenderPlayCard;
                     break;
                 case TurnPhase.DefenderPlayCard:
                     DefenderPlayCard(gameController);
-                    gameController.EndTurn();
+
                     break;
             }
         }
@@ -53,6 +51,19 @@ public class TurnStateModel : GameStateModel
         if (attacker.IsCardSelected())
         {
             gameController.CurrentPhase = TurnPhase.AttackerAssignPillz;
+        }
+        else if (!attacker.IsReady() && gameController.CurrentTurnPlayer == PlayerType.Player)
+        {
+            attacker.SubscribeToCardClicked();
+            attacker.SetReady(true);
+        }
+        else if (gameController.CurrentTurnPlayer == PlayerType.Opponent)
+
+        {
+            gameController.GetCurrentDefender().UnSubscribeToCardClicked();
+            attacker.SetReady(true);
+            CardController selectedCard = attacker.SelectCard();
+            Debug.Log("Attacker has chosen card: " + selectedCard.GetName());
         }
         //attacker.character.SelectedCard = selectedCard;
         //Debug.Log("Attacker has chosen card: " + selectedCard.name);
@@ -80,24 +91,44 @@ public class TurnStateModel : GameStateModel
         {
             Debug.Log("Attacker plays card: " + card.GetName());
             card.IsPlayed = true;
+            attacker.ResetChargeAssignment();
 
             // Highlight the selected card
             //card.GetCardView().HighlightCard(true);
 
             // Move the card up
-            card.GetCardView().MoveCardUp(true);
+            attacker.MarkCard();
 
             // Display next phase text
-            gameController.DisplayPhaseText(gameController.GetCurrentDefender().GetName() + " PHASE", TurnPhase.DefenderChooseCard);
+            gameController.DisplayPhaseText(gameController.GetCurrentDefender().GetName() + " DEFENDS", TurnPhase.DefenderChooseCard);
         }
     }
 
     private void DefenderChooseCard(GameController gameController)
     {
-        CharacterController defender = gameController.GetCurrentDefender();
-        CardController selectedCard = defender.SelectCard();
+        //CharacterController defender = gameController.GetCurrentDefender();
+        //CardController selectedCard = defender.SelectCard();
         //defender.character.SelectedCard = selectedCard;
-        Debug.Log("Defender has chosen card: " + selectedCard.name);
+        //Debug.Log("Defender has chosen card: " + selectedCard.GetName());
+
+        CharacterController defender = gameController.GetCurrentDefender();
+        if (defender.IsCardSelected())
+        {
+            gameController.CurrentPhase = TurnPhase.DefenderAssignPillz;
+        }
+        else if (!defender.IsReady() && gameController.CurrentTurnPlayer == PlayerType.Opponent)
+        {
+            defender.SubscribeToCardClicked();
+            defender.SetReady(true);
+        }
+        else if (gameController.CurrentTurnPlayer == PlayerType.Player)
+
+        {
+            gameController.GetCurrentAttacker().UnSubscribeToCardClicked();
+            defender.SetReady(true);
+            CardController selectedCard = defender.SelectCard();
+            Debug.Log("Defender has chosen card: " + selectedCard.GetName());
+        }
     }
 
     private void DefenderAssignPillz(GameController gameController)
@@ -109,7 +140,9 @@ public class TurnStateModel : GameStateModel
             gameController.CurrentPhase = TurnPhase.DefenderPlayCard;
         }
         else
-        { defender.AssignPillz(); }
+        {
+            defender.AssignPillz();
+        }
         //int assignedPillz = defender.AssignPillz();
         //defender.character.SelectedCard.Pillz = assignedPillz;
         //defender.character.Pillz -= assignedPillz;
@@ -118,10 +151,26 @@ public class TurnStateModel : GameStateModel
 
     private void DefenderPlayCard(GameController gameController)
     {
+
         CharacterController defender = gameController.GetCurrentDefender();
         CardController card = defender.GetCurrentCard();
-        card.IsPlayed = true;
-        Debug.Log("Defender plays card: " + card.GetName());
-        // Additional logic for pre-battle abilities can be implemented here.
+
+        if (!card.IsPlayed)
+        {
+            Debug.Log("Defender plays card: " + card.GetName());
+            card.IsPlayed = true;
+            defender.ResetChargeAssignment();
+
+            // Highlight the selected card
+            //card.GetCardView().HighlightCard(true);
+
+            // Move the card up
+            defender.MarkCard();
+
+            gameController.EndTurn();
+
+            // Display next phase text
+            //gameController.DisplayPhaseText(gameController.GetCurrentDefender().GetName() + " PHASE", TurnPhase.DefenderChooseCard);
+        }
     }
 }

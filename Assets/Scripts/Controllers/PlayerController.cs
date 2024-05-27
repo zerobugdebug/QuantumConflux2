@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-    public PlayerModel playerModel;
+    //public PlayerModel playerModel;
     private GameObject chargeAssignment;
     [SerializeField] private GameObject chargeAssignmentViewPrefab;
     private ChargeAssignmentView chargeAssignmentView;
@@ -15,23 +15,28 @@ public class PlayerController : CharacterController
             return;
         }
 
-        characterModel = playerModel = new PlayerModel();
+        characterModel = new PlayerModel();
     }
 
+    public override void ResetChargeAssignment()
+    {
+        Destroy(chargeAssignment);
+    }
     public override void AssignPillz()
     {
-
         if (chargeAssignment == null)
         {
             chargeAssignment = Instantiate(chargeAssignmentViewPrefab, GetCurrentCard().GetCardView().transform);
+
             if (chargeAssignment.TryGetComponent(out chargeAssignmentView))
             {
+
                 RectTransform rt = chargeAssignment.GetComponent<RectTransform>();
                 rt.anchorMin = Vector2.up;
                 rt.anchorMax = Vector2.up;
                 rt.pivot = Vector2.zero;
 
-                chargeAssignmentView.Initialize(playerModel.GetPillz(), this);
+                chargeAssignmentView.Initialize(characterModel.GetPillz(), this);
                 chargeAssignmentView.gameObject.SetActive(true);
             }
         }
@@ -45,10 +50,16 @@ public class PlayerController : CharacterController
     public override void ConfirmPillzSelection(int value)
     {
         selectedCard.SetPillz(value);
+        characterModel.RemovePillz(value);
     }
 
     public override CardController SelectCard()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override void MarkCard()
+    {
+        selectedCard.GetCardView().MoveCardUp(true);
     }
 }

@@ -16,7 +16,8 @@ public enum TurnPhase
     AttackerPlayCard,
     DefenderChooseCard,
     DefenderAssignPillz,
-    DefenderPlayCard
+    DefenderPlayCard,
+    StartTurn
 }
 
 public class GameController : MonoBehaviour
@@ -42,6 +43,8 @@ public class GameController : MonoBehaviour
     public int PlayerLifePoints { get; private set; }
     public int OpponentLifePoints { get; private set; }
 
+    public int TurnNumber { get; private set; }
+
     public PlayerController playerController;
     public OpponentController opponentController;
     public CardDBController cardDBController;
@@ -58,13 +61,9 @@ public class GameController : MonoBehaviour
 
     public void InitializeGame()
     {
-        cardDBController.Initialize(new CardDBModel());
-
         // Initialize game logic, set initial life points, etc.
-        PlayerLifePoints = 12;
-        OpponentLifePoints = 12;
-        Debug.Log("Game Initialized");
-
+        cardDBController.Initialize(new CardDBModel());
+        TurnNumber = 1;
         // Initialize player and opponent
         playerController.Initialize(new CharacterModel(), "Player");
         opponentController.Initialize(new CharacterModel(), "Opponent");
@@ -87,14 +86,12 @@ public class GameController : MonoBehaviour
 
         // Initialize player and opponent hands
         playerController.GenerateHand();
-        playerController.SubscribeToCardClicked();
         opponentController.GenerateHand();
-
-        //TODO: call instantiate for all cards on hand.
 
         // Update hands views
         playerController.UpdateView();
         opponentController.UpdateView();
+        Debug.Log("Game Initialized");
 
     }
 
@@ -113,37 +110,51 @@ public class GameController : MonoBehaviour
     {
         // Logic for starting a turn
         TurnFinished = false;
-        DisplayPhaseText(GetCurrentAttacker().GetName() + " PHASE", TurnPhase.AttackerChooseCard);
-        Debug.Log(CurrentTurnPlayer + "'s turn started.");
+        CharacterController attacker = GetCurrentAttacker();
+        CharacterController defender = GetCurrentDefender();
+        attacker.SetReady(false);
+        defender.SetReady(false);
+        DisplayPhaseText(attacker.GetName() + " ATTACKS", TurnPhase.AttackerChooseCard);
+        Debug.Log(attacker.GetName() + " attacking");
     }
 
     public void EndTurn()
     {
         // Logic for ending a turn
         TurnFinished = true;
+        TurnNumber++;
         Debug.Log(CurrentTurnPlayer + "'s turn ended.");
     }
 
     public void ResolveRound()
     {
         // Logic for resolving the round, e.g., comparing card powers, updating life points
-        int playerAttack = CalculatePlayerAttack();
-        int opponentAttack = CalculateOpponentAttack();
+        CharacterController attacker = GetCurrentAttacker();
+        CharacterController defender = GetCurrentDefender();
 
-        if (playerAttack > opponentAttack)
+        int attackerAttack = attacker.CalculateAttack();
+        Debug.Log("attackerAttack = " + attackerAttack);
+        int defenderAttack = defender.CalculateAttack();
+        Debug.Log("defenderAttack = " + defenderAttack);
+
+        if (attackerAttack >= defenderAttack)
         {
-            OpponentLifePoints -= 2; // Example damage value
-            Debug.Log("Player wins the round. Opponent loses 2 life points.");
-        }
-        else if (opponentAttack > playerAttack)
-        {
-            PlayerLifePoints -= 2; // Example damage value
-            Debug.Log("Opponent wins the round. Player loses 2 life points.");
+            int remainingLifePoints = defender.ApplyDamage(attacker);
+            Debug.Log(attacker.GetName() + " wins the round. " + defender.GetName() + " has " + remainingLifePoints + " left");
         }
         else
         {
-            Debug.Log("Round is a tie.");
+            int remainingLifePoints = attacker.ApplyDamage(defender);
+            Debug.Log(defender.GetName() + " wins the round. " + attacker.GetName() + " has " + remainingLifePoints + " left");
         }
+
+        playerController.GetCurrentCard().GetCardView().MoveCardUp(false);
+        opponentController.GetCurrentCard().GetCardView().MoveCardUp(true);
+        attacker.UpdateView();
+        defender.UpdateView();
+        attacker.ResetSelectedCard();
+        defender.ResetSelectedCard();
+        CurrentPhase = TurnPhase.StartTurn;
     }
 
     public void SwitchRoles()
@@ -156,17 +167,33 @@ public class GameController : MonoBehaviour
     public bool IsGameOver()
     {
         // Check if the game is over (e.g., if any player's life points reach zero)
-        if (PlayerLifePoints <= 0)
+        if (playerController.GetLifePoints() <= 0)
         {
             Debug.Log("Game Over. Opponent wins!");
             return true;
         }
-        else if (OpponentLifePoints <= 0)
+        else if (opponentController.GetLifePoints() <= 0)
         {
             Debug.Log("Game Over. Player wins!");
             return true;
         }
-
+        else if (playerController.SelectRandomUnplayedCard() == null)
+        {
+            Debug.Log("Game Over. No cards available!");
+            if (playerController.GetLifePoints() < opponentController.GetLifePoints())
+            {
+                Debug.Log("Opponent wins!");
+            }
+            else if (playerController.GetLifePoints() > opponentController.GetLifePoints())
+            {
+                Debug.Log("Player wins!");
+            }
+            else
+            {
+                Debug.Log("Tie game.");
+            }
+            return true;
+        }
         return false;
     }
 
@@ -186,20 +213,6 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game ended with no clear winner.");
         }
-    }
-
-    private int CalculatePlayerAttack()
-    {
-        // Example calculation of player attack value
-        // This would typically involve the card played and the number of pillz assigned
-        return UnityEngine.Random.Range(1, 10); // Placeholder for actual calculation
-    }
-
-    private int CalculateOpponentAttack()
-    {
-        // Example calculation of opponent attack value
-        // This would typically involve the card played and the number of pillz assigned
-        return UnityEngine.Random.Range(1, 10); // Placeholder for actual calculation
     }
 
     public CharacterController GetCurrentAttacker()
@@ -261,5 +274,19 @@ public class GameController : MonoBehaviour
         fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
         await Task.Delay(1000); // Wait for another second
         CurrentPhase = phase;
+    }
+    public async void DisplayStateText(string message, GameStateModel state)
+    {
+
+        fullScreenText.text = message; // Set the message text
+        fullScreenText.gameObject.SetActive(true); // Make the text visible
+
+        await fullScreenText.DOFade(1, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade in over 1 second
+        await Task.Delay(1000); // Wait for 1 second
+        await fullScreenText.DOFade(0, 1f).SetEase(Ease.InOutQuad).AsyncWaitForCompletion(); // Fade out over 1 second
+
+        fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
+        await Task.Delay(1000); // Wait for another second
+        gameStateController.SetState(state, this);
     }
 }

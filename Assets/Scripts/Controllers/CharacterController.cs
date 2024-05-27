@@ -8,6 +8,7 @@ public abstract class CharacterController : MonoBehaviour
     private DeckController selectedDeck;
     private List<DeckController> decks;
     protected CardController selectedCard;
+    private bool ready;
     [SerializeField] protected CharacterHandView characterHandView;
     [SerializeField] private CharacterStatsView characterStatsView;
 
@@ -76,6 +77,14 @@ public abstract class CharacterController : MonoBehaviour
     {
 
         hand.SubscribeToCardClicked(this);
+
+    }
+
+    public void UnSubscribeToCardClicked()
+    {
+
+        hand.UnSubscribeToCardClicked(this);
+
     }
 
     // Method to shuffle the deck
@@ -96,9 +105,24 @@ public abstract class CharacterController : MonoBehaviour
         characterStatsView.UpdateView(GetLifePoints(), GetPillz());
     }
 
-    private int GetLifePoints()
+    public int GetLifePoints()
     {
         return characterModel.GetLifePoints();
+    }
+
+    public int RemoveLifePoints(int amount)
+    {
+        return characterModel.RemoveLifePoints(amount);
+    }
+
+    public int ApplyDamage(CharacterController attacker)
+    {
+        return RemoveLifePoints(attacker.GetDamage());
+    }
+
+    private int GetDamage()
+    {
+        return selectedCard.GetDamage();
     }
 
     public CardController GetCurrentCard()
@@ -118,12 +142,19 @@ public abstract class CharacterController : MonoBehaviour
         return selectedCard != null;
     }
 
+    public bool IsReady()
+    {
+        return ready;
+    }
+
     public bool IsCurrentCardPillzAssigned()
     {
         return selectedCard != null && selectedCard.IsPillzAssigned();
     }
 
     public abstract void AssignPillz();
+
+    public abstract void ResetChargeAssignment();
 
     public abstract void ConfirmPillzSelection(int value);
 
@@ -152,5 +183,22 @@ public abstract class CharacterController : MonoBehaviour
     {
         return characterModel.GetPillz();
     }
+
+    public int CalculateAttack()
+    {
+        return selectedCard.CalculateAttack();
+    }
+
+    internal void ResetSelectedCard()
+    {
+        selectedCard = null;
+    }
+
+    internal void SetReady(bool ready)
+    {
+        this.ready = ready;
+    }
+
+    public abstract void MarkCard();
 }
 

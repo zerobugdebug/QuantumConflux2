@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class HandController
 {
@@ -31,7 +32,11 @@ public class HandController
     {
         foreach (CardController card in GetCards())
         {
-            card.CardClicked += character.OnCardClicked;
+            if (!card.IsPlayed)
+            {
+                Debug.Log("Subscribe to " + card.GetName());
+                card.CardClicked += character.OnCardClicked;
+            }
         }
     }
 
@@ -58,5 +63,14 @@ public class HandController
     internal List<CardController> GetCards()
     {
         return handModel.GetCards();
+    }
+
+    internal void UnSubscribeToCardClicked(CharacterController character)
+    {
+        foreach (CardController card in GetCards())
+        {
+            Debug.Log("Unsubscribe from " + card.GetName());
+            card.CardClicked -= character.OnCardClicked;
+        }
     }
 }
