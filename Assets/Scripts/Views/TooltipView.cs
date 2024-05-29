@@ -19,6 +19,8 @@ public class TooltipView : MonoBehaviour
         this.tooltipModel = tooltipModel;
 
         text.text = this.tooltipModel.GetText();
+        //Vector2 scale = text.GetPreferredValues();
+        //text.transform.localScale = scale;
         transform.position = position;
     }
 

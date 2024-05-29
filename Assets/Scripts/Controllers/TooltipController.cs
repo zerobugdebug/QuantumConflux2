@@ -25,7 +25,7 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
             Destroy(tooltipObject);
         }
 
-        tooltipObject = Instantiate(tooltipPrefab, transform);
+        tooltipObject = Instantiate(tooltipPrefab, GameObject.Find("Canvas").transform);
         //tooltipView.GetComponentInChildren<Text>().text = text;
         //        RectTransform tooltipRectTransform = currentTooltip.GetComponent<RectTransform>();
         //      tooltipRectTransform.position = position;
@@ -55,20 +55,25 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         ShowTooltip(eventData.position);
-        Debug.Log("OnPointerEnter(PointerEventData eventData");
+        //Debug.Log("OnPointerEnter(PointerEventData eventData");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         HideTooltip();
-        Debug.Log("OnPointerExit(PointerEventData eventData");
+        //Debug.Log("OnPointerExit(PointerEventData eventData");
 
     }
 
     public void OnPointerMove(PointerEventData eventData)
     {
         tooltipView.UpdateView(tooltipModel, eventData.position);
-        Debug.Log("OnPointerMove(PointerEventData eventData");
+        //Debug.Log("OnPointerMove(PointerEventData eventData");
 
+    }
+
+    internal void SetPrefab(GameObject prefab)
+    {
+        tooltipPrefab = prefab;
     }
 }

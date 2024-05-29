@@ -34,19 +34,23 @@ public class CardController : MonoBehaviour
         {
             cardView.UpdateView(cardModel);
             cardView.SetCardController(this);
-            Transform clanLogo = cardObject.transform.Find("ClanIcon");
-            if (clanLogo.gameObject.TryGetComponent(out TooltipController tooltip))
-            {
-                TooltipModel tooltipModel = new("Clan: " + cardModel.Clan);
-                tooltip.Initialize(tooltipModel);
-            }
+            CreateTooltip(cardObject, "ClanIcon", "Clan: " + cardModel.Clan);
+            CreateTooltip(cardObject, "Background/PowerBackground", "Show the power of the card attack\r\nPower: " + cardModel.Power);
+            CreateTooltip(cardObject, "Background/DamageBackground", "Show the damage of the card\r\nDamage: " + cardModel.Damage);
+            /*            Transform clanLogo = cardObject.transform.Find("ClanIcon");
+                        if (clanLogo.gameObject.TryGetComponent(out TooltipController tooltip))
+                        {
+                            TooltipModel tooltipModel = new("Clan: " + cardModel.Clan);
+                            tooltip.Initialize(tooltipModel);
+                        }
 
-            Transform powerBackground = cardObject.transform.Find("Background/PowerBackground");
-            if (powerBackground.gameObject.TryGetComponent(out tooltip))
-            {
-                TooltipModel tooltipModel = new("Power: " + cardModel.Power);
-                tooltip.Initialize(tooltipModel);
-            }
+                        Transform powerBackground = cardObject.transform.Find("Background/PowerBackground");
+                        if (powerBackground.gameObject.TryGetComponent(out tooltip))
+                        {
+                            TooltipModel tooltipModel = new("Power: " + cardModel.Power);
+                            tooltip.Initialize(tooltipModel);
+                        }
+            */
         }
         else
         {
@@ -118,5 +122,17 @@ public class CardController : MonoBehaviour
     internal int GetDamage()
     {
         return cardModel.Damage;
+    }
+
+    public void CreateTooltip(GameObject parent, string childName, string text)
+    {
+        Transform transform = parent.transform.Find(childName);
+        if (!transform.gameObject.TryGetComponent(out TooltipController tooltip))
+        {
+            tooltip = transform.gameObject.AddComponent<TooltipController>();
+            tooltip.SetPrefab(Resources.Load<GameObject>("Prefabs/Tooltip"));
+        }
+        TooltipModel tooltipModel = new(text);
+        tooltip.Initialize(tooltipModel);
     }
 }
