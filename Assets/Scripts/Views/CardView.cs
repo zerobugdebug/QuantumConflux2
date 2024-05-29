@@ -36,6 +36,7 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         bonusText.text = this.cardModel.Bonus;
         clanLogoImage.sprite = this.cardModel.ClanLogo;
         portraitImage.sprite = this.cardModel.Portrait;
+
     }
 
     public void SetCardController(CardController cardController)

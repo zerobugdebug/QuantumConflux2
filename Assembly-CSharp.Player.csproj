@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
     <Compile Include="Assets\Scripts\Views\ChargeAssignmentView.cs" />
     <Compile Include="Assets\Scripts\Models\SwitchRolesStateModel.cs" />
+    <Compile Include="Assets\Scripts\Controllers\TooltipController.cs" />
     <Compile Include="Assets\Scripts\Controllers\HandController.cs" />
     <Compile Include="Assets\Scripts\Models\CheckGameEndStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\HandModel.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerHandView.cs" />
     <Compile Include="Assets\Scripts\Models\SelectStartingPlayerStateModel.cs" />
+    <Compile Include="Assets\Scripts\Models\TooltipModel.cs" />
     <Compile Include="Assets\Scripts\Models\OpponentModel.cs" />
     <Compile Include="Assets\Scripts\Models\ResolveRoundStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Assets\Scripts\Models\CardDBModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardController.cs" />
     <Compile Include="Assets\Scripts\Views\CharacterHandView.cs" />
+    <Compile Include="Assets\Scripts\Views\TooltipView.cs" />
     <Compile Include="Assets\Scripts\Models\CardModel.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentHandView.cs" />
     <Compile Include="Assets\Scripts\Models\GameStateModel.cs" />
