@@ -13,6 +13,11 @@ public class TooltipController : MonoBehaviour, IPointerEnterHandler, IPointerEx
         tooltipModel = new TooltipModel("test");
     }
 
+    public void Initialize(TooltipModel tooltipModel)
+    {
+        this.tooltipModel = tooltipModel;
+    }
+
     public void ShowTooltip(Vector2 position)
     {
         if (tooltipObject != null)

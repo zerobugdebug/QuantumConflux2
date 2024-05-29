@@ -34,6 +34,19 @@ public class CardController : MonoBehaviour
         {
             cardView.UpdateView(cardModel);
             cardView.SetCardController(this);
+            Transform clanLogo = cardObject.transform.Find("ClanIcon");
+            if (clanLogo.gameObject.TryGetComponent(out TooltipController tooltip))
+            {
+                TooltipModel tooltipModel = new("Clan: " + cardModel.Clan);
+                tooltip.Initialize(tooltipModel);
+            }
+
+            Transform powerBackground = cardObject.transform.Find("Background/PowerBackground");
+            if (powerBackground.gameObject.TryGetComponent(out tooltip))
+            {
+                TooltipModel tooltipModel = new("Power: " + cardModel.Power);
+                tooltip.Initialize(tooltipModel);
+            }
         }
         else
         {
