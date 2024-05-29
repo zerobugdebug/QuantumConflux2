@@ -22,6 +22,12 @@ public class PlayerController : CharacterController
     {
         Destroy(chargeAssignment);
     }
+
+    public bool IsChargeAssignmentExist()
+    {
+        return chargeAssignment != null;
+    }
+
     public override void AssignPillz()
     {
         if (chargeAssignment == null)
@@ -38,6 +44,15 @@ public class PlayerController : CharacterController
 
                 chargeAssignmentView.Initialize(characterModel.GetPillz(), this);
                 chargeAssignmentView.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (IsCardChanged())
+            {
+                ResetChargeAssignment();
+                ResetCardChanged();
+
             }
         }
 

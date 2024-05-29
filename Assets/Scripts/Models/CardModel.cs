@@ -17,6 +17,7 @@ public class CardModel
     [SerializeField] private Sprite portrait;
     [SerializeField] private int pillz = 0;
     [SerializeField] private bool pillzAssigned = false;
+    [SerializeField] private Sprite clanLogo;
 
     //TODO: Replace public properties with the logical functions for the access
     public int Id { get => id; private set => id = value; }
@@ -31,6 +32,8 @@ public class CardModel
     public Sprite Portrait { get => portrait; private set => portrait = value; }
     public int Pillz { get => pillz; private set => pillz = value; }
 
+    public Sprite ClanLogo { get => clanLogo; private set => clanLogo = value; }
+
     public void SetPillz(int value)
     {
         pillz = value;
@@ -39,6 +42,16 @@ public class CardModel
     public bool IsPillzAssigned()
     {
         return pillzAssigned;
+    }
+
+    public void SetClanLogo(Sprite clanLogo)
+    {
+        this.clanLogo = clanLogo;
+    }
+
+    public void SetPortrait(Sprite portrait)
+    {
+        this.portrait = portrait;
     }
 
     // Constructor for easy initialization
@@ -67,5 +80,6 @@ public class CardModel
         Bonus = bonus;
         Portrait = portrait;
         Pillz = pillz;
+        ClanLogo = clanLogo;
     }
 }

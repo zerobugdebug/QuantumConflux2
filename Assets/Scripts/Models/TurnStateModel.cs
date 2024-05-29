@@ -136,7 +136,7 @@ public class TurnStateModel : GameStateModel
         CharacterController defender = gameController.GetCurrentDefender();
         if (defender.IsCurrentCardPillzAssigned())
         {
-            Debug.Log("Attacker has assigned " + defender.GetAssignedPillz() + " Pillz to card: " + defender.GetCurrentCard());
+            Debug.Log("Attacker has assigned " + defender.GetAssignedPillz() + " Pillz to card: " + defender.GetCurrentCard().GetName());
             gameController.CurrentPhase = TurnPhase.DefenderPlayCard;
         }
         else

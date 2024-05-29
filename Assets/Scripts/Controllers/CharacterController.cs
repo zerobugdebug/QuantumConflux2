@@ -9,6 +9,7 @@ public abstract class CharacterController : MonoBehaviour
     private List<DeckController> decks;
     protected CardController selectedCard;
     private bool ready;
+    private bool cardChanged = false;
     [SerializeField] protected CharacterHandView characterHandView;
     [SerializeField] private CharacterStatsView characterStatsView;
 
@@ -166,6 +167,7 @@ public abstract class CharacterController : MonoBehaviour
     public void OnCardClicked(CardController card)
     {
         Debug.Log("PlayerController received Card clicked for card: " + card.GetName());
+        cardChanged = selectedCard != null;
         selectedCard = card;
     }
 
@@ -197,6 +199,16 @@ public abstract class CharacterController : MonoBehaviour
     internal void SetReady(bool ready)
     {
         this.ready = ready;
+    }
+
+    internal bool IsCardChanged()
+    {
+        return cardChanged;
+    }
+
+    internal void ResetCardChanged()
+    {
+        cardChanged = false;
     }
 
     public abstract void MarkCard();

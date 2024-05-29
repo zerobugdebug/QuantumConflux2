@@ -69,20 +69,23 @@ public class GameController : MonoBehaviour
         opponentController.Initialize(new CharacterModel(), "Opponent");
 
         // Initialize player and opponent decks
-        DeckController deck = new();
-        deck.AddCard(cardDBController.GetCardById(0));
-        deck.AddCard(cardDBController.GetCardById(1));
-        deck.AddCard(cardDBController.GetCardById(2));
-        deck.AddCard(cardDBController.GetCardById(3));
-        deck.AddCard(cardDBController.GetCardById(4));
-        deck.AddCard(cardDBController.GetCardById(5));
-        deck.AddCard(cardDBController.GetCardById(6));
-        deck.AddCard(cardDBController.GetCardById(7));
+        DeckController playerDeck = new();
+        for (int i = 0 ; i < 8 ; i++)
+        {
+            playerDeck.AddCard(cardDBController.GetRandomCard());
+        }
 
-        playerController.AddDeck(deck);
-        playerController.SelectDeck(deck);
-        opponentController.AddDeck(deck);
-        opponentController.SelectDeck(deck);
+        playerController.AddDeck(playerDeck);
+        playerController.SelectDeck(playerDeck);
+
+        DeckController opponentDeck = new();
+        for (int i = 0 ; i < 8 ; i++)
+        {
+            opponentDeck.AddCard(cardDBController.GetRandomCard());
+        }
+
+        opponentController.AddDeck(opponentDeck);
+        opponentController.SelectDeck(opponentDeck);
 
         // Initialize player and opponent hands
         playerController.GenerateHand();

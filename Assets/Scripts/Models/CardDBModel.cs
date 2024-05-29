@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class CardDBModel
 {
-    private readonly List<CardController> cards;
+    private List<CardController> cards;
 
     public CardDBModel()
     {
@@ -28,5 +29,10 @@ public class CardDBModel
     public CardController GetCardById(int id)
     {
         return cards[id];
+    }
+
+    public CardController GetRandomCard()
+    {
+        return cards[Random.Range(0, cards.Count)];
     }
 }

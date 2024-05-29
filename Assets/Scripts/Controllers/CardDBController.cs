@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardDBController : MonoBehaviour
 {
     private CardDBModel cardDBModel;
-    [SerializeField]
-    private TextAsset cardDataJson; // Drag-and-drop JSON file in the Inspector
-    [SerializeField]
-    private GameObject cardPrefab;
+    [SerializeField] private TextAsset cardDataJson; // Drag-and-drop JSON file in the Inspector
+    [SerializeField] private GameObject cardPrefab;
 
     // Method to initialize the card database model
     public void Initialize(CardDBModel cardDBModel)
@@ -31,9 +30,14 @@ public class CardDBController : MonoBehaviour
         CardList cardList = JsonUtility.FromJson<CardList>(jsonData);
         if (cardList != null && cardList.cardModels != null)
         {
+            Sprite[] clanLogos = Resources.LoadAll<Sprite>("Icons/clan_logos");
             foreach (CardModel cardModel in cardList.cardModels)
             {
                 CardController card = gameObject.AddComponent<CardController>();
+                Sprite clanLogo = clanLogos.Single(s => s.name == $"clan_{cardModel.Clan}");
+                cardModel.SetClanLogo(clanLogo);
+                Sprite portrait = Resources.Load<Sprite>($"Cards/CharacterCards/{cardModel.Name}");
+                cardModel.SetPortrait(portrait);
                 card.Initialize(cardModel, cardPrefab);
                 cardDBModel.AddCard(card);
             }
@@ -54,6 +58,11 @@ public class CardDBController : MonoBehaviour
     public CardController GetCardById(int id)
     {
         return cardDBModel.GetCardById(id);
+    }
+
+    public CardController GetRandomCard()
+    {
+        return cardDBModel.GetRandomCard();
     }
 
     [System.Serializable]

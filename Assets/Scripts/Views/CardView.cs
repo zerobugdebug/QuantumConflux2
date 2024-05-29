@@ -9,10 +9,11 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI clanText;
+    [SerializeField] private TextMeshProUGUI abilitiesText;
     [SerializeField] private TextMeshProUGUI bonusText;
     [SerializeField] private Image portraitImage;
     [SerializeField] private Image highlightOverlay;  // New overlay for highlighting
+    [SerializeField] private Image clanLogoImage;
 
     private CardModel cardModel;
     private CardController cardController;
@@ -30,10 +31,11 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
         nameText.text = this.cardModel.Name;
         powerText.text = this.cardModel.Power.ToString();
         damageText.text = this.cardModel.Damage.ToString();
-        levelText.text = $"{this.cardModel.Level}/{this.cardModel.MaxLevel}";
-        clanText.text = this.cardModel.Clan;
+        levelText.text = $"{this.cardModel.Level}";
+        abilitiesText.text = this.cardModel.Abilities[0];
         bonusText.text = this.cardModel.Bonus;
-        //portraitImage.sprite = this.cardModel.Portrait;
+        clanLogoImage.sprite = this.cardModel.ClanLogo;
+        portraitImage.sprite = this.cardModel.Portrait;
     }
 
     public void SetCardController(CardController cardController)
@@ -64,6 +66,6 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 
     public void MoveCardUp(bool moveUp)
     {
-        transform.localPosition += moveUp ? new Vector3(0, 50, 0) : new Vector3(0, -50, 0);
+        transform.localPosition += moveUp ? new Vector3(0, 100, 0) : new Vector3(0, -100, 0);
     }
 }
