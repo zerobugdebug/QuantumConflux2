@@ -6,7 +6,7 @@ public class EndGameStateModel : GameStateModel
     public override void OnEnter(GameController game)
     {
         game.ShowGameResults();
-        Application.Quit();
+        // Application.Quit();
     }
 
     public override void OnExit(GameController game) { }

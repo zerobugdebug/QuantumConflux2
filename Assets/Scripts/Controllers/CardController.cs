@@ -18,6 +18,13 @@ public class CardController : MonoBehaviour
         this.cardPrefab = cardPrefab;
     }
 
+    public CardController Clone()
+    {
+        CardController card = Instantiate(this);
+        card.Initialize(cardModel.Clone(), cardPrefab);
+        return card;
+    }
+
     // Method to instantiate a card and assign its view
     public void InstantiateCard(Transform parent = null)
     {

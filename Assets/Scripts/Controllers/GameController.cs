@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerType
 {
@@ -238,6 +239,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game ended with no clear winner.");
         }
+        SceneManager.LoadScene("MainMenu");
     }
 
     public CharacterController GetCurrentAttacker()

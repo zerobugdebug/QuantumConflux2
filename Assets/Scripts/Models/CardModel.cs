@@ -66,7 +66,8 @@ public class CardModel
         string clan,
         string bonus,
         Sprite portrait,
-        int pillz
+        int pillz,
+        Sprite clanLogo
     )
     {
         Id = id;
@@ -81,5 +82,24 @@ public class CardModel
         Portrait = portrait;
         Pillz = pillz;
         ClanLogo = clanLogo;
+    }
+
+    public CardModel Clone()
+    {
+        return new CardModel(
+            id,
+            name,
+            power,
+            damage,
+            new List<string>(abilities),
+            level,
+            maxLevel,
+            clan,
+            bonus,
+            portrait,
+            pillz,
+            clanLogo
+        )
+;
     }
 }

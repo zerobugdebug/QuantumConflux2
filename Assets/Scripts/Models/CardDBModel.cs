@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardDBModel
@@ -28,11 +29,11 @@ public class CardDBModel
     // Method to find and return a card by its ID
     public CardController GetCardById(int id)
     {
-        return cards[id];
+        return cards[id].Clone();
     }
 
     public CardController GetRandomCard()
     {
-        return cards[Random.Range(0, cards.Count)];
+        return cards[Random.Range(0, cards.Count)].Clone();
     }
 }
