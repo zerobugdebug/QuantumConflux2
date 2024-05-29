@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Models\SetupGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CharacterController.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
+    <Compile Include="Assets\Scripts\Models\FightDisplayStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
     <Compile Include="Assets\Scripts\Models\EndGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardDBController.cs" />

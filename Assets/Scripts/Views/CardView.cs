@@ -18,6 +18,12 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     private CardModel cardModel;
     private CardController cardController;
 
+    private RectTransform rectTransform;
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+    }
+
     public void UpdateView(CardModel cardModel)
     {
         if (cardModel == null)
@@ -68,5 +74,20 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     public void MoveCardUp(bool moveUp)
     {
         transform.localPosition += moveUp ? new Vector3(0, 100, 0) : new Vector3(0, -100, 0);
+    }
+
+    public void EnlargeCard(bool enlarge, Vector3 position)
+    {
+        Debug.Log(rectTransform);
+        if (enlarge)
+        {
+            rectTransform.localScale = new Vector3(1.5f, 1.5f, 1.5f); // Enlarge the card
+            rectTransform.localPosition = position; // Move to specific position
+        }
+        else
+        {
+            rectTransform.localScale = Vector3.one; // Reset to normal size
+            rectTransform.localPosition = Vector3.zero; // Reset to original position
+        }
     }
 }

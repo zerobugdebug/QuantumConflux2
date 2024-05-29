@@ -41,7 +41,7 @@ public class TurnStateModel : GameStateModel
         }
         else
         {
-            gameController.gameStateController.SetState(gameController.resolveRoundState, gameController);
+            gameController.gameStateController.SetState(gameController.fightDisplayState, gameController);
         }
     }
 

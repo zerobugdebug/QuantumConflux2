@@ -1,8 +1,10 @@
 using DG.Tweening;
+using System.Collections;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum PlayerType
 {
@@ -26,11 +28,15 @@ public class GameController : MonoBehaviour
     public GameStateController gameStateController;
 
     [SerializeField] private TextMeshProUGUI fullScreenText; // Reference to the UI Text element
+    [SerializeField] private Image dimmerImage; // Reference to the UI Text element
+    [SerializeField] private TextMeshProUGUI attackerAttackText; // Reference to the UI Text element
+    [SerializeField] private TextMeshProUGUI defenderAttackText; // Reference to the UI Text element
 
     // References to GameState ScriptableObjects
     public SetupGameStateModel setupGameState;
     public SelectStartingPlayerStateModel selectStartingPlayerState;
     public TurnStateModel turnState;
+    public FightDisplayStateModel fightDisplayState;
     public ResolveRoundStateModel resolveRoundState;
     public SwitchRolesStateModel switchRolesState;
     public CheckGameEndStateModel checkGameEndState;
@@ -322,5 +328,93 @@ public class GameController : MonoBehaviour
         fullScreenText.gameObject.SetActive(false); // Hide the text after fading out
         //await Task.Delay(1000); // Wait for another second
         gameStateController.SetState(state, this);
+    }
+
+    public void DisplayFight()
+    {
+        _ = StartCoroutine(DisplayFightCoroutine());
+    }
+
+    private IEnumerator DisplayFightCoroutine()
+    {
+        // Dim the screen
+        // Assume you have a method to dim the screen
+        DimScreen();
+
+        // Show both cards in enlarged view
+        CharacterController attacker = GetCurrentAttacker();
+        CharacterController defender = GetCurrentDefender();
+
+        // Position the cards at the left and right center of the screen
+        Vector3 attackerPosition = new(-Screen.width / 4, 0, 0);
+        Vector3 defenderPosition = new(Screen.width / 4, 0, 0);
+
+        // Instantiate copies of the current cards and set them as children of the dimmer image
+        //GameObject attackerCard = Instantiate(attacker.GetCurrentCard().GetCardView().gameObject, dimmerImage.transform);
+        //GameObject defenderCard = Instantiate(defender.GetCurrentCard().GetCardView().gameObject, dimmerImage.transform);
+
+        //attacker.GetCurrentCard().InstantiateCard(dimmerImage.transform);
+
+        CardController attackerCard = attacker.GetCurrentCard().Clone();
+        CardController defenderCard = defender.GetCurrentCard().Clone();
+        attackerCard.InstantiateCard(dimmerImage.transform);
+        defenderCard.InstantiateCard(dimmerImage.transform);
+
+        // Enlarge and position the cards
+        attackerCard.GetCardView().EnlargeCard(true, attackerPosition);
+        defenderCard.GetCardView().EnlargeCard(true, defenderPosition);
+
+        // Show attack calculations
+        int attackerAttack = attacker.CalculateAttack();
+        attackerAttackText.text = attacker.GetName() + "\r\nCharges: " + attacker.GetAssignedPillz() + "\r\nTotal attack: " + attackerAttack.ToString();
+        attackerAttackText.gameObject.SetActive(true);
+        int defenderAttack = defender.CalculateAttack();
+        defenderAttackText.text = defender.GetName() + "\r\nCharges: " + defender.GetAssignedPillz() + "\r\nTotal attack: " + defenderAttack.ToString();
+        defenderAttackText.gameObject.SetActive(true);
+        ShowAttackCalculation(attackerAttack, defenderAttack);
+
+        yield return new WaitForSeconds(10); // Wait for 2 seconds for the fight display
+
+        // Destroy the instantiated cards
+        Destroy(attackerCard);
+        Destroy(defenderCard);
+        attackerAttackText.gameObject.SetActive(false);
+        defenderAttackText.gameObject.SetActive(false);
+
+        UndimScreen();
+        // Transition to the next state
+        gameStateController.SetState(resolveRoundState, this);
+    }
+
+    private void ShowAttackCalculation(int attackerAttack, int defenderAttack)
+    {
+        // Implement UI logic to show attack calculations
+    }
+
+    public void DimScreen()
+    {
+        if (dimmerImage != null)
+        {
+            dimmerImage.gameObject.SetActive(true);
+            _ = dimmerImage.DOFade(0.9f, 1f).SetEase(Ease.InOutQuad);
+        }
+        else
+        {
+            Debug.LogError("dimmerImage is not assigned.");
+        }
+    }
+
+    // Method to undim the screen using DOTween
+    public void UndimScreen()
+    {
+        if (dimmerImage != null)
+        {
+            _ = dimmerImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad);
+            dimmerImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("dimmerImage is not assigned.");
+        }
     }
 }
