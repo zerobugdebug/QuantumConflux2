@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      javelin_0: 1955742168755860186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

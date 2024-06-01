@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      blaze_0: 5545042574785207394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

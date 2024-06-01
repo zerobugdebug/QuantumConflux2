@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      titania_0: 2177610154556707277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

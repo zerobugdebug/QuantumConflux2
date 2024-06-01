@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      zephyr_0: -461304893434441238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

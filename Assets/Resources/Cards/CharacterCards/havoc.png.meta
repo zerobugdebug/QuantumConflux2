@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      havoc_0: 4737449835376791756
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

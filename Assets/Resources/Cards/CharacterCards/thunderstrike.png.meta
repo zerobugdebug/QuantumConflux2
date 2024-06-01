@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thunderstrike_0: -5864475002445925672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

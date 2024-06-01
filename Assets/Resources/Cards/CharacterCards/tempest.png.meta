@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tempest_0: 1189391646813821600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

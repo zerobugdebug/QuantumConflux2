@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      storm_0: 2146828524736656195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emberglow_0: -6160551002422540812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

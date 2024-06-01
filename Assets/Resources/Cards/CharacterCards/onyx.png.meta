@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      onyx_0: 8598158208298288967
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

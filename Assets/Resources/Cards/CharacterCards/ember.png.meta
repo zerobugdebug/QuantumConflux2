@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ember_0: 4435594221877548958
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

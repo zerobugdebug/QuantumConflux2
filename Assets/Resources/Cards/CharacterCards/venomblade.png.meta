@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      venomblade_0: -5354012683201447119
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

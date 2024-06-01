@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nova_0: 7388317091959596368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

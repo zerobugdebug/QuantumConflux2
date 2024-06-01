@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      seraph_0: -2941053293978122475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

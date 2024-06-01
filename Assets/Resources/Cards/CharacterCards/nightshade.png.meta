@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      nightshade_0: 8967053726701778354
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

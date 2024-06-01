@@ -184,7 +184,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cyclone_0: 6377998953933956063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
