@@ -61,6 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Factories\HeroFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\TraitController.cs" />
     <Compile Include="Assets\Scripts\Controllers\OpponentController.cs" />
     <Compile Include="Assets\Scripts\Views\ChargeAssignmentView.cs" />
@@ -74,8 +75,10 @@
     <Compile Include="Assets\Scripts\Views\PlayerStatsView.cs" />
     <Compile Include="Assets\Scripts\Models\DeckModel.cs" />
     <Compile Include="Assets\Scripts\Models\TurnStateModel.cs" />
+    <Compile Include="Assets\Scripts\Factories\ItemFactory.cs" />
     <Compile Include="Assets\Scripts\Views\CharacterStatsView.cs" />
     <Compile Include="Assets\Scripts\Models\CharacterModel.cs" />
+    <Compile Include="Assets\Scripts\Factories\EffectFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\HeroCardController.cs" />
     <Compile Include="Assets\Scripts\Views\OpponentStatsView.cs" />
     <Compile Include="Assets\Scripts\Controllers\DeckController.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Assets\Scripts\Models\SlotModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Views\HeroView.cs" />
+    <Compile Include="Assets\Scripts\Factories\AbilityFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\HeroController.cs" />
     <Compile Include="Assets\Scripts\Controllers\AbilityController.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerHandView.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Assets\Scripts\Models\SelectStartingPlayerStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\TooltipModel.cs" />
     <Compile Include="Assets\Scripts\Models\OpponentModel.cs" />
+    <Compile Include="Assets\Scripts\Factories\TraitFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ItemController.cs" />
     <Compile Include="Assets\Scripts\Models\ResolveRoundStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
@@ -99,13 +104,16 @@
     <Compile Include="Assets\Scripts\Models\SetupGameStateModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CharacterController.cs" />
     <Compile Include="Assets\Scripts\Views\SlotView.cs" />
+    <Compile Include="Assets\Scripts\Factories\SlotFactory.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Models\HeroModel.cs" />
     <Compile Include="Assets\Scripts\Models\FightDisplayStateModel.cs" />
     <Compile Include="Assets\Scripts\Models\RoleModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
+    <Compile Include="Assets\Scripts\Factories\HeroCardFactory.cs" />
     <Compile Include="Assets\Scripts\Models\TraitModel.cs" />
     <Compile Include="Assets\Scripts\Models\EndGameStateModel.cs" />
+    <Compile Include="Assets\Scripts\Factories\RoleFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardDBController.cs" />
     <Compile Include="Assets\Scripts\Models\CardDBModel.cs" />
     <Compile Include="Assets\Scripts\Controllers\CardController.cs" />
@@ -433,12 +441,12 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

@@ -1,28 +1,37 @@
 public class HeroModel
 {
-    private string heroId;
-    private string heroName;
+    private int id;
+    private string name;
     private Rarity rarity;
     private TraitController trait;
-    private RoleController role;
     private int speed;
     private int might;
     private int damage;
 
-    public string GetHeroId() { return heroId; }
-    public void SetHeroId(string value) { heroId = value; }
+    // Constructor for easy initialization
+    public HeroModel(int id, string name, Rarity rarity, int speed, int might, int damage, TraitController trait)
+    {
+        this.id = id;
+        this.name = name;
+        this.rarity = rarity;
+        this.speed = speed;
+        this.might = might;
+        this.damage = damage;
+        this.trait = trait;
+    }
 
-    public string GetHeroName() { return heroName; }
-    public void SetHeroName(string value) { heroName = value; }
+    public int GetId() { return id; }
+    public void SetId(int value) { id = value; }
+
+    public string GetName() { return name; }
+
+    public void SetName(string value) { name = value; }
 
     public Rarity GetRarity() { return rarity; }
     public void SetRarity(Rarity value) { rarity = value; }
 
     public TraitController GetTrait() { return trait; }
     public void SetTrait(TraitController value) { trait = value; }
-
-    public RoleController GetRole() { return role; }
-    public void SetRole(RoleController value) { role = value; }
 
     public int GetSpeed() { return speed; }
     public void SetSpeed(int value) { speed = value; }

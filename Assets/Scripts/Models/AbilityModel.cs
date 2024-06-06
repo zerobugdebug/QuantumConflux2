@@ -4,6 +4,13 @@ public class AbilityModel
     private string abilityName;
     private EffectController effect;
 
+    public AbilityModel(string abilityId, string abilityName, EffectController effect)
+    {
+        this.abilityId = abilityId;
+        this.abilityName = abilityName;
+        this.effect = effect;
+    }
+
     public string GetAbilityId() { return abilityId; }
     public void SetAbilityId(string value) { abilityId = value; }
 

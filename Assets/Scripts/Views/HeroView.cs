@@ -1,7 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroView : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI traitText;
+    [SerializeField] private Image portraitImage;
+
     public void DisplayHeroInfo(HeroModel heroModel)
     {
         // Code to display hero information in the UI

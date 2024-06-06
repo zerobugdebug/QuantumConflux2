@@ -15,7 +15,6 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
     [SerializeField] private Image highlightOverlay;  // New overlay for highlighting
     [SerializeField] private Image clanLogoImage;
 
-    private CardModel cardModel;
     private CardController cardController;
 
     private RectTransform rectTransform;
@@ -32,16 +31,16 @@ public class CardView : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
             return;
         }
 
-        this.cardModel = cardModel;
+        // this.cardModel = cardModel;
 
-        nameText.text = this.cardModel.Name;
-        powerText.text = this.cardModel.Power.ToString();
-        damageText.text = this.cardModel.Damage.ToString();
-        levelText.text = $"{this.cardModel.Level}";
-        abilitiesText.text = this.cardModel.Abilities[0];
-        bonusText.text = this.cardModel.Bonus;
-        clanLogoImage.sprite = this.cardModel.ClanLogo;
-        portraitImage.sprite = this.cardModel.Portrait;
+        nameText.text = cardModel.Name;
+        powerText.text = cardModel.Power.ToString();
+        damageText.text = cardModel.Damage.ToString();
+        levelText.text = $"{cardModel.Level}";
+        abilitiesText.text = cardModel.Abilities[0];
+        bonusText.text = cardModel.Bonus;
+        clanLogoImage.sprite = cardModel.ClanLogo;
+        portraitImage.sprite = cardModel.Portrait;
 
     }
 

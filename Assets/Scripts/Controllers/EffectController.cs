@@ -3,16 +3,16 @@ public class EffectController
     private EffectModel effectModel;
     private EffectView effectView;
 
-    public EffectController(EffectModel model, EffectView view)
+    public EffectController(EffectModel effectModel, EffectView effectView)
     {
-        effectModel = model;
-        effectView = view;
+        this.effectModel = effectModel;
+        this.effectView = effectView;
     }
 
-    public void UpdateEffectInfo(string id, string name, string luaScriptPath)
+    public void UpdateEffectInfo(int id, string name, string luaScriptPath)
     {
-        effectModel.SetEffectId(id);
-        effectModel.SetEffectName(name);
+        effectModel.SetId(id);
+        effectModel.SetName(name);
         effectModel.SetLuaScriptPath(luaScriptPath);
         effectView.DisplayEffectInfo(effectModel);
     }

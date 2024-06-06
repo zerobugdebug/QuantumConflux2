@@ -7,7 +7,17 @@ public class ItemModel
     private int speedModifier;
     private int mightModifier;
     private int damageModifier;
-    private SlotModel slot;
+
+    public ItemModel(string itemId, string itemName, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier)
+    {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.rarity = rarity;
+        this.category = category;
+        this.speedModifier = speedModifier;
+        this.mightModifier = mightModifier;
+        this.damageModifier = damageModifier;
+    }
 
     public string GetItemId() { return itemId; }
     public void SetItemId(string value) { itemId = value; }
@@ -29,7 +39,4 @@ public class ItemModel
 
     public int GetDamageModifier() { return damageModifier; }
     public void SetDamageModifier(int value) { damageModifier = value; }
-
-    public SlotModel GetSlot() { return slot; }
-    public void SetSlot(SlotModel value) { slot = value; }
 }

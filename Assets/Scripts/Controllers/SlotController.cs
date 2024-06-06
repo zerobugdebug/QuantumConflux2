@@ -25,4 +25,7 @@ public class SlotController
         slotView.DisplaySlotInfo(slotModel);
         slotView.DisplayAllowedCategories(slotModel.GetAllowedCategories());
     }
+
+    public ItemController GetItem() { return slotModel.GetItem(); }
+    public void SetItem(ItemController value) { slotModel.SetItem(value); }
 }

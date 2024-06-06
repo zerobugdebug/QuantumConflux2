@@ -13,7 +13,7 @@ public class RoleController
 
     public void UpdateRoleName(string name)
     {
-        roleModel.SetRoleName(name);
+        roleModel.SetName(name);
         roleView.DisplayRoleInfo(roleModel);
     }
 
@@ -23,7 +23,7 @@ public class RoleController
         roleView.DisplayRoleAbility(ability);
     }
 
-    public void UpdateRoleSlots(List<SlotModel> slots)
+    public void UpdateRoleSlots(List<SlotController> slots)
     {
         roleModel.SetSlots(slots);
         roleView.DisplayRoleSlots(slots);
@@ -34,5 +34,22 @@ public class RoleController
         roleView.DisplayRoleInfo(roleModel);
         roleView.DisplayRoleAbility(roleModel.GetAbility());
         roleView.DisplayRoleSlots(roleModel.GetSlots());
+    }
+
+    public string GetName() { return roleModel.GetName(); }
+
+    public int GetSpeed()
+    {
+        return roleModel.GetSpeed();
+    }
+
+    public int GetMight()
+    {
+        return roleModel.GetMight();
+    }
+
+    public int GetDamage()
+    {
+        return roleModel.GetDamage();
     }
 }

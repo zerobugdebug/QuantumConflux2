@@ -4,6 +4,14 @@ public class TraitModel
     private string traitName;
     private EffectController effect;
 
+    // Constructor
+    public TraitModel(string traitId, string traitName, EffectController effect)
+    {
+        this.traitId = traitId;
+        this.traitName = traitName;
+        this.effect = effect;
+    }
+
     public string GetTraitId() { return traitId; }
     public void SetTraitId(string value) { traitId = value; }
 

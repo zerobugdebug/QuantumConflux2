@@ -9,9 +9,11 @@ public class HeroController
         heroView = view;
     }
 
-    public void UpdateHeroName(string name)
+    public string GetName() { return heroModel.GetName(); }
+
+    public void UpdateName(string name)
     {
-        heroModel.SetHeroName(name);
+        heroModel.SetName(name);
         heroView.DisplayHeroInfo(heroModel);
     }
 
@@ -27,11 +29,11 @@ public class HeroController
         heroView.DisplayHeroTrait(trait);
     }
 
-    public void UpdateHeroRole(RoleController role)
-    {
-        heroModel.SetRole(role);
-        heroView.DisplayHeroRole(role);
-    }
+    //public void UpdateHeroRole(RoleController role)
+    //{
+    //    heroModel.SetRole(role);
+    //    heroView.DisplayHeroRole(role);
+    //}
 
     public void UpdateHeroStats(int speed, int might, int damage)
     {

@@ -27,7 +27,7 @@ public class ItemController
         itemView = view;
     }
 
-    public void UpdateItemInfo(string id, string name, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier, SlotModel slot)
+    public void UpdateItemInfo(string id, string name, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier)
     {
         itemModel.SetItemId(id);
         itemModel.SetItemName(name);
@@ -36,7 +36,6 @@ public class ItemController
         itemModel.SetSpeedModifier(speedModifier);
         itemModel.SetMightModifier(mightModifier);
         itemModel.SetDamageModifier(damageModifier);
-        itemModel.SetSlot(slot);
         itemView.DisplayItemInfo(itemModel);
         itemView.DisplayItemModifiers(itemModel);
     }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CardController : MonoBehaviour
+public class CardController // : MonoBehaviour
 {
     private CardModel cardModel;
     private CardView cardView;
@@ -20,7 +20,7 @@ public class CardController : MonoBehaviour
 
     public CardController Clone()
     {
-        CardController card = Instantiate(this);
+        CardController card = new();
         card.Initialize(cardModel.Clone(), cardPrefab);
         return card;
     }
@@ -28,7 +28,7 @@ public class CardController : MonoBehaviour
     // Method to instantiate a card and assign its view
     public void InstantiateCard(Transform parent = null)
     {
-        GameObject cardObject = Instantiate(cardPrefab, parent);
+        GameObject cardObject = GameObject.Instantiate(cardPrefab, parent);
 
         if (cardObject.TryGetComponent(out cardView))
         {
@@ -96,7 +96,7 @@ public class CardController : MonoBehaviour
 
     public int GetAssignedPillz()
     {
-        return cardModel.Pillz;
+        return cardModel.GetPillz();
     }
 
     public CardView GetCardView()
@@ -111,17 +111,17 @@ public class CardController : MonoBehaviour
 
     public string GetName()
     {
-        return cardModel.Name;
+        return cardModel.GetName();
     }
 
     internal int CalculateAttack()
     {
-        return (GetAssignedPillz() + 1) * cardModel.Power;
+        return (GetAssignedPillz() + 1) * cardModel.GetMight();
     }
 
     internal int GetDamage()
     {
-        return cardModel.Damage;
+        return cardModel.GetDamage();
     }
 
     public void CreateTooltip(GameObject parent, string childName, string text)
