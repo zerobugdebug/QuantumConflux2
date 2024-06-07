@@ -2,24 +2,24 @@ using System.Collections.Generic;
 
 public class SlotModel
 {
-    private string slotId;
-    private string slotName;
+    private string id;
+    private string name;
     private List<ItemCategory> allowedCategories;
     private ItemController item;
 
-    public SlotModel(string slotId, string slotName, List<ItemCategory> allowedCategories, ItemController item = null)
+    public SlotModel(string id, string name, List<ItemCategory> allowedCategories, ItemController item = null)
     {
-        this.slotId = slotId;
-        this.slotName = slotName;
+        this.id = id;
+        this.name = name;
         this.allowedCategories = allowedCategories;
         this.item = item;
     }
 
-    public string GetSlotId() { return slotId; }
-    public void SetSlotId(string value) { slotId = value; }
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
 
-    public string GetSlotName() { return slotName; }
-    public void SetSlotName(string value) { slotName = value; }
+    public string GetName() { return name; }
+    public void SetName(string value) { name = value; }
 
     public List<ItemCategory> GetAllowedCategories() { return allowedCategories; }
     public void SetAllowedCategories(List<ItemCategory> value) { allowedCategories = value; }

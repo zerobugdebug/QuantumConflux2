@@ -1,21 +1,21 @@
 public class AbilityModel
 {
-    private string abilityId;
-    private string abilityName;
+    private string id;
+    private string name;
     private EffectController effect;
 
-    public AbilityModel(string abilityId, string abilityName, EffectController effect)
+    public AbilityModel(string id, string name, EffectController effect)
     {
-        this.abilityId = abilityId;
-        this.abilityName = abilityName;
+        this.id = id;
+        this.name = name;
         this.effect = effect;
     }
 
-    public string GetAbilityId() { return abilityId; }
-    public void SetAbilityId(string value) { abilityId = value; }
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
 
-    public string GetAbilityName() { return abilityName; }
-    public void SetAbilityName(string value) { abilityName = value; }
+    public string GetName() { return name; }
+    public void SetName(string value) { name = value; }
 
     public EffectController GetEffect() { return effect; }
     public void SetEffect(EffectController value) { effect = value; }

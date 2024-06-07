@@ -1,22 +1,22 @@
 public class TraitModel
 {
-    private string traitId;
-    private string traitName;
+    private string id;
+    private string name;
     private EffectController effect;
 
     // Constructor
-    public TraitModel(string traitId, string traitName, EffectController effect)
+    public TraitModel(string id, string name, EffectController effect)
     {
-        this.traitId = traitId;
-        this.traitName = traitName;
+        this.id = id;
+        this.name = name;
         this.effect = effect;
     }
 
-    public string GetTraitId() { return traitId; }
-    public void SetTraitId(string value) { traitId = value; }
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
 
-    public string GetTraitName() { return traitName; }
-    public void SetTraitName(string value) { traitName = value; }
+    public string GetName() { return name; }
+    public void SetName(string value) { name = value; }
 
     public EffectController GetEffect() { return effect; }
     public void SetEffect(EffectController value) { effect = value; }

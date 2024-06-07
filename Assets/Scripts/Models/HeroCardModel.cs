@@ -1,6 +1,6 @@
 public class HeroCardModel
 {
-    private string heroCardId;
+    private string id;
     private HeroController hero;
     private RoleController role;
     private int speed;
@@ -9,9 +9,9 @@ public class HeroCardModel
     private int pillz = 0;
     private bool pillzAssigned = false;
 
-    public HeroCardModel(string heroCardId, HeroController hero, RoleController role)
+    public HeroCardModel(string id, HeroController hero, RoleController role)
     {
-        this.heroCardId = heroCardId;
+        this.id = id;
         this.hero = hero;
         this.role = role;
         speed = 0;
@@ -21,9 +21,8 @@ public class HeroCardModel
         pillzAssigned = false;
     }
 
-    public string GetHeroCardId() { return heroCardId; }
-    public void SetHeroCardId(string value) { heroCardId = value; }
-
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
     public HeroController GetHero() { return hero; }
     public void SetHero(HeroController value) { hero = value; }
 

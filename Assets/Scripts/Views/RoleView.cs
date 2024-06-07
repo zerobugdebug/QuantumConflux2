@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoleView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI roleText;
+    [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI abilitiyText;
 
     public void DisplayRoleInfo(RoleModel roleModel)

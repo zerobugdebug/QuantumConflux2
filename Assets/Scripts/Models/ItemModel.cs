@@ -1,17 +1,17 @@
 public class ItemModel
 {
-    private string itemId;
-    private string itemName;
+    private string id;
+    private string name;
     private Rarity rarity;
     private ItemCategory category;
     private int speedModifier;
     private int mightModifier;
     private int damageModifier;
 
-    public ItemModel(string itemId, string itemName, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier)
+    public ItemModel(string id, string name, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier)
     {
-        this.itemId = itemId;
-        this.itemName = itemName;
+        this.id = id;
+        this.name = name;
         this.rarity = rarity;
         this.category = category;
         this.speedModifier = speedModifier;
@@ -19,11 +19,11 @@ public class ItemModel
         this.damageModifier = damageModifier;
     }
 
-    public string GetItemId() { return itemId; }
-    public void SetItemId(string value) { itemId = value; }
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
 
-    public string GetItemName() { return itemName; }
-    public void SetItemName(string value) { itemName = value; }
+    public string GetName() { return name; }
+    public void SetName(string value) { name = value; }
 
     public Rarity GetRarity() { return rarity; }
     public void SetRarity(Rarity value) { rarity = value; }
