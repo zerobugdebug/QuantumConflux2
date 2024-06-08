@@ -11,8 +11,8 @@ public class AbilityController
 
     public void UpdateAbilityInfo(string id, string name, EffectController effect)
     {
-        abilityModel.SetAbilityId(id);
-        abilityModel.SetAbilityName(name);
+        abilityModel.SetId(id);
+        abilityModel.SetName(name);
         abilityModel.SetEffect(effect);
         abilityView.DisplayAbilityInfo(abilityModel);
         abilityView.DisplayAbilityEffect(effect);

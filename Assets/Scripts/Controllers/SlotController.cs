@@ -13,8 +13,8 @@ public class SlotController
 
     public void UpdateSlotInfo(string id, string name, List<ItemCategory> categories)
     {
-        slotModel.SetSlotId(id);
-        slotModel.SetSlotName(name);
+        slotModel.SetId(id);
+        slotModel.SetName(name);
         slotModel.SetAllowedCategories(categories);
         slotView.DisplaySlotInfo(slotModel);
         slotView.DisplayAllowedCategories(categories);

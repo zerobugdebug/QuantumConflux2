@@ -11,8 +11,8 @@ public class TraitController
 
     public void UpdateTraitInfo(string id, string name, EffectController effect)
     {
-        traitModel.SetTraitId(id);
-        traitModel.SetTraitName(name);
+        traitModel.SetId(id);
+        traitModel.SetName(name);
         traitModel.SetEffect(effect);
         traitView.DisplayTraitInfo(traitModel);
         traitView.DisplayTraitEffect(effect);

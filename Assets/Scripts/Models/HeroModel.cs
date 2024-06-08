@@ -1,6 +1,6 @@
 public class HeroModel
 {
-    private int id;
+    private string id;
     private string name;
     private Rarity rarity;
     private TraitController trait;
@@ -9,7 +9,7 @@ public class HeroModel
     private int damage;
 
     // Constructor for easy initialization
-    public HeroModel(int id, string name, Rarity rarity, int speed, int might, int damage, TraitController trait)
+    public HeroModel(string id, string name, Rarity rarity, int speed, int might, int damage, TraitController trait)
     {
         this.id = id;
         this.name = name;
@@ -20,8 +20,8 @@ public class HeroModel
         this.trait = trait;
     }
 
-    public int GetId() { return id; }
-    public void SetId(int value) { id = value; }
+    public string GetId() { return id; }
+    public void SetId(string value) { id = value; }
 
     public string GetName() { return name; }
 

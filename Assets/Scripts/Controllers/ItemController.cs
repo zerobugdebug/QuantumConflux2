@@ -29,8 +29,8 @@ public class ItemController
 
     public void UpdateItemInfo(string id, string name, Rarity rarity, ItemCategory category, int speedModifier, int mightModifier, int damageModifier)
     {
-        itemModel.SetItemId(id);
-        itemModel.SetItemName(name);
+        itemModel.SetId(id);
+        itemModel.SetName(name);
         itemModel.SetRarity(rarity);
         itemModel.SetCategory(category);
         itemModel.SetSpeedModifier(speedModifier);

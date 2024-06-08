@@ -9,7 +9,7 @@ public class EffectController
         this.effectView = effectView;
     }
 
-    public void UpdateEffectInfo(int id, string name, string luaScriptPath)
+    public void UpdateEffectInfo(string id, string name, string luaScriptPath)
     {
         effectModel.SetId(id);
         effectModel.SetName(name);
