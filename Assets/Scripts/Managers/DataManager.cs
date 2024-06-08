@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -25,6 +24,16 @@ public class DataManager : MonoBehaviour
     private RoleFactory roleFactory = new();
     private SlotFactory slotFactory = new();
     private TraitFactory traitFactory = new();
+
+    [Header("JSON Files")]
+    [SerializeField] private TextAsset effectJson;
+    [SerializeField] private TextAsset traitJson;
+    [SerializeField] private TextAsset abilityJson;
+    [SerializeField] private TextAsset roleJson;
+    [SerializeField] private TextAsset heroJson;
+    [SerializeField] private TextAsset heroCardJson;
+    [SerializeField] private TextAsset itemJson;
+    [SerializeField] private TextAsset slotJson;
 
     private void Awake()
     {
@@ -54,7 +63,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadEffects()
     {
-        List<EffectData> effectData = LoadData<EffectData>("path/to/effectData.json");
+        List<EffectData> effectData = LoadData<EffectData>(effectJson);
         List<EffectModel> effects = new();
         foreach (EffectData data in effectData)
         {
@@ -65,7 +74,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadTraits()
     {
-        List<TraitData> traitData = LoadData<TraitData>("path/to/traitData.json");
+        List<TraitData> traitData = LoadData<TraitData>(traitJson);
         List<TraitModel> traits = new();
         foreach (TraitData data in traitData)
         {
@@ -78,7 +87,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadAbilities()
     {
-        List<AbilityData> abilityData = LoadData<AbilityData>("path/to/abilityData.json");
+        List<AbilityData> abilityData = LoadData<AbilityData>(abilityJson);
         List<AbilityModel> abilities = new();
         foreach (AbilityData data in abilityData)
         {
@@ -91,7 +100,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadRoles()
     {
-        List<RoleData> roleData = LoadData<RoleData>("path/to/roleData.json");
+        List<RoleData> roleData = LoadData<RoleData>(roleJson);
         List<RoleModel> roles = new();
         foreach (RoleData data in roleData)
         {
@@ -104,7 +113,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadHeroes()
     {
-        List<HeroData> heroData = LoadData<HeroData>("path/to/heroData.json");
+        List<HeroData> heroData = LoadData<HeroData>(heroJson);
         List<HeroModel> heroes = new();
         foreach (HeroData data in heroData)
         {
@@ -117,7 +126,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadHeroCards()
     {
-        List<HeroCardData> heroCardData = LoadData<HeroCardData>("path/to/heroCardData.json");
+        List<HeroCardData> heroCardData = LoadData<HeroCardData>(heroCardJson);
         List<HeroCardModel> heroCards = new();
         foreach (HeroCardData data in heroCardData)
         {
@@ -132,7 +141,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadItems()
     {
-        List<ItemData> itemData = LoadData<ItemData>("path/to/itemData.json");
+        List<ItemData> itemData = LoadData<ItemData>(itemJson);
         List<ItemModel> items = new();
         foreach (ItemData data in itemData)
         {
@@ -143,7 +152,7 @@ public class DataManager : MonoBehaviour
 
     private void LoadSlots()
     {
-        List<SlotData> slotData = LoadData<SlotData>("path/to/slotData.json");
+        List<SlotData> slotData = LoadData<SlotData>(slotJson);
         List<SlotModel> slots = new();
         foreach (SlotData data in slotData)
         {
@@ -157,9 +166,8 @@ public class DataManager : MonoBehaviour
         SlotDB.SetSlots(slots);
     }
 
-    private List<T> LoadData<T>(string filePath)
+    private List<T> LoadData<T>(TextAsset jsonData)
     {
-        string json = File.ReadAllText(filePath);
-        return JsonConvert.DeserializeObject<List<T>>(json);
+        return JsonConvert.DeserializeObject<List<T>>(jsonData.text);
     }
 }
